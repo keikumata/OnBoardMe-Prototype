@@ -87,13 +87,18 @@
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
-
-      var object = {userid:userID, name:response.name};
-      $.post("/login",object).then(function(response) {
-        console.log("response", response);
-      })
-
-    });
+      var success = function(data) {
+        console.log(data, 'response');
+      };
+      var object = JSON.stringify({userid:userID, name:response.name});
+      $.ajax({
+        type: "POST",
+        url: '/login',
+        data: object,
+        success: success,
+        dataType: 'application/json'
+      });
+    }); 
     FB.api('/me/friends', function(response) {
       console.log(response);
     });
