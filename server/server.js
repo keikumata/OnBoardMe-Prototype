@@ -1,5 +1,3 @@
-process.env.PWD = process.cwd();
-
 var express = require('express');
 var userController = require('./userController');
 var path = require('path');
@@ -13,8 +11,8 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-console.log(path.resolve(process.env.PWD + '/../client'));
-app.use(express.static(path.resolve(process.env.PWD + '/../client')));
+
+app.use(express.static(path.resolve(__dirname + '/../client')));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
