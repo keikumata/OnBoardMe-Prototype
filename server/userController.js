@@ -30,7 +30,7 @@ var Country = sequelize.define('country', {
 
 module.exports = {
 	loginPage: function(req, res) {
-		res.sendFile(path.resolve(__dirname + '/../client/boards.html'));
+		res.sendFile(path.resolve(__dirname + '/../client/login.html'));
 	},
 	login: function(req, res) {
 		var name = req.body.name;
