@@ -45,8 +45,7 @@ module.exports = {
 
 		var name = req.body.name;
 		var fbid = req.body.userid;
-		var type = typeof name+fbid;
-		res.send(type);
+		res.send(name);
 		// User.findAll({
 		// 	where: {
 		// 		fbid: fbid,
@@ -73,5 +72,10 @@ module.exports = {
 			res.send(board);
 		})
 	},
+	post: function(req, res) {
+		console.log(req.body);
+		var send = JSON.stringify(req.body);
+		res.send(send);
+	}
 };
 

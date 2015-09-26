@@ -13,11 +13,11 @@ app.use(function(req, res, next) {
 });
 
 app.use(express.static(path.resolve(__dirname + '/../client')));
-app.use(bodyParser.json());
+app.use(bodyParser());
 app.use(cookieParser());
 
 app.get('/login', userController.loginPage);
 app.post('/login', userController.login);
 // app.post('/board', userController.createBoard);
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 8000);
