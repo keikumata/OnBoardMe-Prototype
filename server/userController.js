@@ -1,3 +1,4 @@
+var path = require('path');
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize('sql291441', 'sql291441', 'tM2%dY3%', {
   host: "sql2.freemysqlhosting.net",
@@ -28,14 +29,29 @@ var Country = sequelize.define('country', {
 });
 
 module.exports = {
+	loginPage: function(req, res) {
+		res.sendFile(path.resolve(__dirname + '/../client/boards.html'));
+	},
 	login: function(req, res) {
+		var name = req.body.name;
+		var fbid = req.body.userid;
 		User.findAll({
 			where: {
-				name: 'Kei Yoshikoshi'
+				fbid: fbid,
 			}
 		}).then(function(user) {
-			res.cookie('user_id',user[0].dataValues.id, { maxAge: 900000, httpOnly: true });
-			res.end();
+			if (user.length) {
+				res.cookie('user_id', user[0].dataValues.id, { maxAge: 900000, httpOnly: true });
+				res.send('successfully logged in');
+			} else {
+				User.create({
+					name: name,
+					fbid: fbid,
+				}).then(function(user) {
+					res.cookie('user_id', user[0].dataValues.id, { maxAge: 900000, httpOnly: true });
+					res.send('successfully created user')
+				});
+			}
 		});
 	},
 	createBoard: function(req, res) {

@@ -29,7 +29,7 @@ var Country = sequelize.define('country', {
 
 User.findAll({
 	where: {
-		id: 1,
+		id: 3,
 	}
 }).then(function(user) {
 	console.log(user[0].dataValues.name, 'asdlkfjas');

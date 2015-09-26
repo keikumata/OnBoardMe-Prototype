@@ -15,7 +15,8 @@ app.use(express.static(__dirname + '/../client'));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.get('/login', userController.login);
+app.get('/login', userController.loginPage);
+app.post('/login', userController.login);
 app.post('/board', userController.createBoard);
 
 app.listen(8000);
