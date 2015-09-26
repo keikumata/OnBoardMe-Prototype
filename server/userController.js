@@ -1,3 +1,4 @@
+process.env.PWD = process.cwd();
 // var path = require('path');
 // var Sequelize = require('sequelize');
 // var sequelize = new Sequelize('sql291441', 'sql291441', 'tM2%dY3%', {
@@ -30,7 +31,7 @@
 
 module.exports = {
 	loginPage: function(req, res) {
-		res.sendFile(path.resolve(__dirname + '/../client/login.html'));
+		res.sendFile(path.resolve(process.env.PWD + '/../client/login.html'));
 	},
 	// login: function(req, res) {
 	// 	var name = req.body.name;
