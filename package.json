@@ -1,0 +1,27 @@
+{
+  "name": "onboardme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keikumata/OnBoardMe-Prototype.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keikumata/OnBoardMe-Prototype/issues"
+  },
+  "homepage": "https://github.com/keikumata/OnBoardMe-Prototype#readme",
+  "dependencies": {
+    "body-parser": "^1.14.0",
+    "express": "^4.13.3",
+    "sequelize": "^3.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.7.1"
+  }
+}
