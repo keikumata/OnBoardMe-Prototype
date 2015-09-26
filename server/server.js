@@ -1,5 +1,5 @@
 var express = require('express');
-// var userController = require('./userController');
+var userController = require('./userController');
 var path = require('path');
 
 var bodyParser = require('body-parser');
@@ -16,7 +16,7 @@ app.use(express.static(path.resolve(__dirname + '/../client')));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// app.get('/login', userController.loginPage);
+app.get('/login', userController.loginPage);
 // app.post('/login', userController.login);
 // app.post('/board', userController.createBoard);
 
