@@ -12,8 +12,13 @@ app.use(function(req, res, next) {
   next();
 });
 
+<<<<<<< HEAD
 app.use(express.static(path.resolve(__dirname + '/../client')));
 app.use(bodyParser());
+=======
+app.use(express.static(path.resolve(__dirname + '/../client/')));
+app.use(bodyParser.json());
+>>>>>>> 434888b8f2af8c560bca0ea85d8dafb412eed7b1
 app.use(cookieParser());
 
 app.get('/login', userController.loginPage);
