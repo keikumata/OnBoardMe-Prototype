@@ -1,5 +1,6 @@
 var express = require('express');
 var userController = require('./userController');
+var path = require('path');
 
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -11,7 +12,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(__dirname + '/../client'));
+app.use(express.static(path.resolve(__dirname + '/../client')));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
