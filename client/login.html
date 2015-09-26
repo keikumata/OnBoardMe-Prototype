@@ -18,6 +18,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
+      // window.location="board.html";
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -41,11 +42,11 @@
 
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : 531549910353906,
+      appId      : 1693469200899306,
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.2' // use version 2.2
+    version    : 'v2.4' // use version 2.2
   });
 
   // Now that we've initialized the JavaScript SDK, we call 
@@ -81,12 +82,12 @@
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
+      document.getElementById('status').click() =
       'Thanks for logging in, ' + response.name + '!';
     });
     FB.api('/me/friends', function(response) {
-    console.log(response);
-  });
+      console.log(response);
+    });
   }
 
 
