@@ -20,7 +20,7 @@
       // Logged into your app and Facebook.
       var userID = response.authResponse.userID;
       testAPI(userID);
-      setTimeout(redirect(), 5000);
+      setTimeout(redirect(), 5000); // this milliseconds is not working
 
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
@@ -34,11 +34,8 @@
     }
   }
   function redirect() {
-   redirection();
+   window.location="boards.html";
  }
- function redirection() {
-  window.location="boards.html";
-}
   // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
