@@ -45,7 +45,8 @@ module.exports = {
 
 		var name = req.body.name;
 		var fbid = req.body.userid;
-		res.send('sfa;sldkfjsldj');
+		var type = typeof name+fbid;
+		res.send(type);
 		// User.findAll({
 		// 	where: {
 		// 		fbid: fbid,
