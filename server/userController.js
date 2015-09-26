@@ -45,25 +45,24 @@ module.exports = {
 
 		var name = req.body.name;
 		var fbid = req.body.userid;
-		res.send(name);
-		// User.findAll({
-		// 	where: {
-		// 		fbid: fbid,
-		// 	}
-		// }).then(function(user) {
-		// 	if (user.length) {
-		// 		res.cookie('user_id', user[0].dataValues.id, { maxAge: 900000, httpOnly: true });
-		// 		res.send('successfully logged in');
-		// 	} else {
-		// 		User.create({
-		// 			name: name,
-		// 			fbid: fbid,
-		// 		}).then(function(user) {
-		// 			res.cookie('user_id', user[0].dataValues.id, { maxAge: 900000, httpOnly: true });
-		// 			res.send('successfully created user')
-		// 		});
-		// 	}
-		// });
+		User.findAll({
+			where: {
+				fbid: fbid,
+			}
+		}).then(function(user) {
+			if (user.length) {
+				res.cookie('user_id', user[0].dataValues.id, { maxAge: 900000, httpOnly: true });
+				res.send('successfully logged in');
+			} else {
+				User.create({
+					name: name,
+					fbid: fbid,
+				}).then(function(user) {
+					res.cookie('user_id', user[0].dataValues.id, { maxAge: 900000, httpOnly: true });
+					res.send('successfully created user')
+				});
+			}
+		});
 	},
 	createBoard: function(req, res) {
 		var user_id = req.cookies.user_id;
