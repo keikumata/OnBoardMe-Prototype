@@ -12,7 +12,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(path.resolve(__dirname + '/../client/home.html')));
+app.use(express.static(path.resolve(__dirname + '/../client/')));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
