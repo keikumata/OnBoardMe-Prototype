@@ -3,8 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>OnBoardMe</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 </head>
 <body>
+	<script type="text/javascript">
+		post = function() {
+			$.post('/board').then(function(res) {
+				console.log(res, 'post');
+			});
+		};
+	</script>
 	<h1>hello world!</h1>
+	<button onclick='post()'>CLICK ME</button>
 </body>
 </html>

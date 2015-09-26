@@ -2,6 +2,7 @@ var express = require('express');
 var userController = require('./userController');
 
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var app = express();
 
 app.use(function(req, res, next) {
@@ -12,7 +13,9 @@ app.use(function(req, res, next) {
 
 app.use(express.static(__dirname + '/../client'));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
-app.get('/hello', userController.sendHello);
+app.get('/login', userController.login);
+app.post('/board', userController.createBoard);
 
 app.listen(8000);
