@@ -19,4 +19,4 @@ app.get('/login', userController.loginPage);
 app.post('/login', userController.login);
 app.post('/board', userController.createBoard);
 
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
