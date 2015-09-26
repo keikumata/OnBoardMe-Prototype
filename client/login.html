@@ -97,6 +97,8 @@
         data: object,
         success: success,
         dataType: 'application/json'
+      }).then(function(data) {
+        console.log(data, 'data');
       });
     }); 
     FB.api('/me/friends', function(response) {
