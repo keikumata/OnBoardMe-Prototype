@@ -1,7 +1,16 @@
+var path = require('path');
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('sql291441', 'sql291441', 'tM2%dY3%', {
-  host: "sql2.freemysqlhosting.net",
-  port: 3306
+process.env.DATABASE_URL = 'postgres://abtjmthjdupiri:HEFpakJRCL0Muj4gztBmEmmsqj@ec2-54-217-202-108.eu-west-1.compute.amazonaws.com:5432/dcg3pq3ehk45a5';
+var match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
+sequelize = new Sequelize(match[5], match[1], match[2], {
+    dialect:  'postgres',
+    protocol: 'postgres',
+    port:     match[4],
+    host:     match[3],
+    logging: false,
+    dialectOptions: {
+        ssl: true
+    }
 });
 sequelize
 .authenticate()
@@ -28,11 +37,8 @@ var Country = sequelize.define('country', {
 });
 
 User.findAll({
-	where: {
-		id: 3,
-	}
 }).then(function(user) {
-	console.log(user[0].dataValues.name, 'asdlkfjas');
+	console.log(user, 'asdlkfjas');
 });
 
 // var Friend = sequelize.define('friend', {

@@ -90,7 +90,7 @@
 
       var object = {userid:userID, name:response.name};
       $.post("/login",object).then(function(response) {
-        console.log("response");
+        console.log("response", response);
       })
 
     });
