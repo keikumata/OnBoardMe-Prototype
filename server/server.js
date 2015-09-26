@@ -10,6 +10,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(express.static(__dirname + '/../client'));
 app.use(bodyParser.json());
 
 app.get('/hello', userController.sendHello);
