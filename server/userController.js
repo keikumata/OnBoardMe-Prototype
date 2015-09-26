@@ -31,7 +31,7 @@
 
 module.exports = {
 	loginPage: function(req, res) {
-		res.sendFile(path.resolve('login.html');
+		res.sendFile(path.resolve(__dirname + '/../client/login.html');
 	},
 	// login: function(req, res) {
 	// 	var name = req.body.name;
