@@ -1,13 +1,13 @@
-var Sequelize = require('sequelize')
-, sequelize = new Sequelize('database_name', 'username', 'password', {
-      dialect: "mysql", // or 'sqlite', 'postgres', 'mariadb'
-      port:    3000, // or 5432 (for postgres)
-    });
+// var Sequelize = require('sequelize')
+// , sequelize = new Sequelize('database_name', 'username', 'password', {
+//       dialect: "mysql", // or 'sqlite', 'postgres', 'mariadb'
+//       port:    3000, // or 5432 (for postgres)
+//     });
 
-sequelize
-.authenticate()
-.then(function(err) {
-  console.log('Connection has been established successfully.');
-}, function (err) { 
-  console.log('Unable to connect to the database:', err);
-});
+// sequelize
+// .authenticate()
+// .then(function(err) {
+//   console.log('Connection has been established successfully.');
+// }, function (err) { 
+//   console.log('Unable to connect to the database:', err);
+// });
