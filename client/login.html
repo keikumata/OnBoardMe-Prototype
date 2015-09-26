@@ -95,8 +95,8 @@
         type: "POST",
         url: '/login',
         data: object,
+        error: success,
         success: success,
-        dataType: 'application/json'
       }).then(function(data) {
         console.log(data, 'data');
       });
