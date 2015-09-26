@@ -3,6 +3,7 @@
 <head>
   <title>Facebook Login JavaScript Example</title>
   <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -17,8 +18,10 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      testAPI();
-      window.location="boards.html";
+      var userID = response.authResponse.userID;
+      testAPI(userID);
+      
+      // window.location="boards.html";
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -78,12 +81,21 @@
 
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
+  function testAPI(userID) {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+      'Thanks for logging in, ' + response.name + '!';
+
+      var object = {userid:userID, name:response.name};
+      $.post("/login",object).then(function(response) {
+        console.log("response");
+      })
+
+    });
+    FB.api('/me/friends', function(response) {
+      console.log(response);
     });
   }
 
