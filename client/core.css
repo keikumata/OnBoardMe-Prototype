@@ -152,6 +152,10 @@ position: relative;
 width: 100%;
 }
 
+.feed:hover{
+	opacity: 0.9;
+}
+
 
 .feed-image{
 	background-color: #f5f5f5;
@@ -194,6 +198,10 @@ float:left;
 padding:20px 5px;
 width:33%;
 text-align: center;
+}
+
+.footer-link:hover{
+background-color: #eee;
 }
 
 
@@ -270,10 +278,97 @@ margin-bottom: 100px;
 			 height: 0;
 			 overflow: hidden;
 	 }
-	 .google-maps iframe {
+.google-maps iframe {
 			 position: absolute;
 			 top: 0;
 			 left: 0;
 			 width: 100% !important;
 			 height: 100% !important;
-	 }
+}
+
+/* BOARDS */
+
+.boards-menu{
+display: block;
+margin: 10px 0px;
+width: 100%;
+}
+
+.board-menu-link{
+display: inline-block;
+width: 50%;
+float: left;
+text-align: center;
+padding: 10px;
+background: #fff;
+color: #000;
+border: 1px solid #eee;
+}
+
+.board-menu-link:hover{
+background-color: #ccc;
+color: #fff;
+}
+
+.boards-wrapper{
+display: block;
+width: 100%;
+margin-top: 30px;
+}
+
+.board{
+width: 40%;
+margin: 10px 5%;
+min-height: 100px;
+display: block;
+float: left;
+background: #4285f4;
+color: #fff;
+text-align: center;
+font-size: 18px;
+border-radius: 4px;
+max-width: 300px;
+}
+
+.board:hover{
+	opacity: 0.8;
+}
+
+.board-title{
+	margin-top: 40px;
+	width: 100%;
+	display: table;
+	position: relative;
+	text-align:center;
+	color:#fff;
+}
+
+.board-plus{
+	width: 40%;
+	margin: 10px 5%;
+	min-height: 100px;
+	display: block;
+	float: left;
+	background: #fff;
+	color: #4285f4;
+	border: #4285f4 1px solid;
+	text-align: center;
+	font-size: 22px;
+	border-radius: 4px;
+	max-width: 300px;
+}
+
+.board-plus:hover{
+	background: #4285f4;
+	color: #fff !important;
+}
+
+
+.board-title-plus{
+	margin-top: 40px;
+	width: 100%;
+	display: table;
+	position: relative;
+	text-align:center;
+	color:#4285f4;
+}
