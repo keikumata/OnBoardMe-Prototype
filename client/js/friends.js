@@ -13,6 +13,7 @@
   setUpDivs(names,uids,urls);
 })
 
+var friends_array = [];
 
  function setUpDivs(names,uids,urls) {
   var dynamic = document.getElementById("dynamic");
@@ -65,11 +66,31 @@
 
     friend.appendChild(clear);
     dynamic.appendChild(friend);
+
+    friends_array.push(uids[i]);
   }
 }
 
 var boardinput = document.getElementById('search');
 var invitebutton = document.getElementById('invite-button');
+invitebutton.onclick = function() {
+  var name = document.getElementById('search').value;
+  var obj = {invited: [], name: name};
+  friends_array.forEach(function(el, i) {
+    var input = document.getElementById(''+i);
+    if (input.checked) {
+      obj.invited.push(el);
+    }
+  });
+  if (obj.invited.length && obj.name){
+    $.post('/create', obj).then(function(res) {
+      // window.location = 'boards.html';
+      console.log(res);
+    })
+  } else {
+    console.log('please select at least one friend or input a name');
+  }
+};
 
 
 // <div class="friend">

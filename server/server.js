@@ -31,7 +31,7 @@ app.post('/pinboard', userController.pinToBoard);
 app.get('/board', userController.getBoards);
 app.get('/boardinfo', userController.getBoardInfo);
 
-
+app.post('/create', userController.createBoard);
 
 app.get('/friend', userController.getFriends);
 

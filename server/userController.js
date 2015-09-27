@@ -55,6 +55,12 @@ var AttractionOption = sequelize.define('attractionoption', {
   boardId: Sequelize.INTEGER,
 });
 
+var Group = sequelize.define('group', {
+  userId: Sequelize.INTEGER,
+  boardId: Sequelize.INTEGER,
+});
+
+
 module.exports = {
 	loginPage: function(req, res) {
 		res.sendFile(path.resolve(__dirname + '/../client/login.html'));
@@ -164,7 +170,7 @@ module.exports = {
 		
 	},
 	getBoards: function(req, res) {
-		var userId = 2;
+		var userId = 1;
 		// var userId = req.cookie['user-id'];
 		Board.findAll({
 			where: {
@@ -175,8 +181,24 @@ module.exports = {
 			for (var i = 0; i < response.length; i++) {
 				obj.boards.push({name: response[i].dataValues.name, bid: response[i].dataValues.id});
 			}
-			var str = JSON.stringify(obj);
-			res.send(str);
+			Group.findAll({
+			  where: {
+			    userId: userId
+			  }
+			}).then(function(relation) {
+			  for (var i = 0; i < relation.length; i++) {
+			    var bid = relation[i].boardId;
+			    Board.findAll({
+			      where: {
+			        id: bid
+			      }
+			    }).then(function(board) {
+			      obj.boards.push({name: board[0].name, bid: bid});
+			      var str = JSON.stringify(obj);
+						res.send(str);
+			    })
+			  }
+			});
 		})
 	},	
 	getBoardInfo: function(req, res) {
@@ -211,10 +233,18 @@ module.exports = {
 		})
 	},
 	createBoard: function(req, res) {
-		var user_id = req.cookies.user_id;
-		Board.create({name: "Summer break", userId: user_id}).then(function(board) {
-			console.log(board);
-			res.send(board);
+		var name = req.body.name;
+		var invited = req.body.invited;
+		Board.create({name: name, userId: 2}).then(function(board) {
+			var bid = board.id;
+			invited.forEach(function(friend_id) {
+				Group.create({
+					userId: friend_id,
+					boardId: bid
+				}).then(function(group) {
+					res.send('group created successfully');
+				})
+			})
 		})
 	},
 	post: function(req, res) {

@@ -26,9 +26,9 @@ sequelize
 //   img: Sequelize.STRING,
 // });
 
-// var Board = sequelize.define('board', {
-//   name: Sequelize.STRING,
-// });
+var Board = sequelize.define('board', {
+  name: Sequelize.STRING,
+});
 
 // User.hasMany(Board,{foreignkey: 'creator'});
 // Board.belongsTo(User, {foreignkey: 'creator'})
@@ -46,17 +46,48 @@ sequelize
 //   img: Sequelize.STRING,
 // });
 
-var AttractionOption = sequelize.define('attractionoption', {
-  attractionId: Sequelize.INTEGER,
+// var AttractionOption = sequelize.define('attractionoption', {
+//   attractionId: Sequelize.INTEGER,
+//   boardId: Sequelize.INTEGER,
+// });
+
+var Group = sequelize.define('group', {
+  userId: Sequelize.INTEGER,
   boardId: Sequelize.INTEGER,
 });
 
-AttractionOption.findAll({}).then(function(res) {console.log(res)});
+Group.findAll({
+  where: {
+    userId: 1
+  }
+}).then(function(relation) {
+  for (var i = 0; i < relation.length; i++) {
+    var bid = relation[i].boardId;
+    Board.findAll({
+      where: {
+        id: bid
+      }
+    }).then(function(board) {
+      console.log(board[0].name);
+    })
 
+  }
+})
 
-// City.hasMany(Attraction, {foreignkey: 'city'});
-// Attraction.belongsTo(City, {foreignkey: 'city'});
-
+// var name = 'Fall Break';
+//     var invited = [1,2];
+//     Board.create({name: name, userId: 2}).then(function(board) {
+//       var bid = board.id;
+//       console.log(bid);
+//       // invited.forEach(function(friend_id) {
+//       //   Group.create({
+//       //     userId: friend_id,
+//       //     boardId: bid
+//       //   }).then(function(group) {
+//       //     res.send('group created successfully');
+//       //   })
+//       // })
+//     })
 // var array = [
 // {name: 'London', img: 'http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg'}, 
 // {name: 'Paris', img: 'http://www.france.com/wp-content/uploads/2014/01/header.jpg'}, 
