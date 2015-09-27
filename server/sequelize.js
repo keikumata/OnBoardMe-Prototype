@@ -36,11 +36,11 @@ var Country = sequelize.define('country', {
   name: Sequelize.STRING,
 });
 
-User.findAll({
-}).then(function(user) {
-	console.log(user, 'asdlkfjas');
-});
 
+Board.findAll({
+}).then(function(user) {
+  console.log(user, 'asdlkfjas');
+});
 // var Friend = sequelize.define('friend', {
 //   uid: Sequelize.STRING,
 //   bid: Sequelize.STRING,

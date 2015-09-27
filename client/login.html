@@ -20,8 +20,8 @@
       // Logged into your app and Facebook.
       var userID = response.authResponse.userID;
       testAPI(userID);
-      setTimeout(redirect(), 5000); // this milliseconds is not working
-
+      
+      // window.location="boards.html";
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -33,9 +33,7 @@
       'into Facebook.';
     }
   }
-  function redirect() {
-   window.location="boards.html";
- }
+
   // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
@@ -89,11 +87,12 @@
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
+
       var object = {userid:userID, name:response.name};
-      $.post('/login', object).then(function(data) {
-        console.log(data);
+      $.post("/login",object).then(function(response) {
+  
       });
-    }); 
+    });
     FB.api('/me/friends', function(response) {
       console.log(response);
     });
