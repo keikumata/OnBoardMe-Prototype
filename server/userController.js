@@ -21,6 +21,12 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
+var Vote = sequelize.define('vote', {
+	uid: Sequelize.INTEGER,
+	attractionId: Sequelize.INTEGER,
+	boardId: Sequelize.INTEGER,
+});
+
 var User = sequelize.define('user', {
   name: Sequelize.STRING,
   fbid: Sequelize.STRING,
@@ -62,6 +68,10 @@ var Group = sequelize.define('group', {
 
 
 module.exports = {
+	log: function(req, res) {
+		res.cookie('user_id', 4, { maxAge: 900000, httpOnly: false });
+		res.send('success');
+	},
 	loginPage: function(req, res) {
 		res.sendFile(path.resolve(__dirname + '/../client/login.html'));
 	},
@@ -170,8 +180,8 @@ module.exports = {
 		
 	},
 	getBoards: function(req, res) {
-		var userId = 1;
-		// var userId = req.cookie['user-id'];
+		// var userId = 1;
+		var userId = Number(req.cookies['user_id']);
 		Board.findAll({
 			where: {
 				userId: userId
@@ -245,18 +255,71 @@ module.exports = {
 			})
 		})
 	},
+	getVotes: function(req, res) {
+		// var aid = Number(req.query.aid);
+		var bid = Number(req.query.bid);
+		Vote.findAll({
+			where: {
+				boardId : bid
+			}
+		}).then(function(votes){
+			var map = {};
+			for (var j=0; j<votes.length;j++) {
+				var temp = "" + votes[j].attractionId;
+				if (map[temp]) {
+					map[temp]++;
+				}
+				else {
+					map[temp] = 1;
+				}
+			}
+			var result = JSON.stringify(map);
+			res.send(result);
+		});
+	},
+	createVotes: function(req, res) {
+		var aid = Number(req.body.aid);
+		var bid = Number(req.body.bid);
+		var uid = Number(req.cookies['user_id']);
+		Vote.findAll({
+			where: {
+				attractionId: aid,
+				boardId : bid,
+				uid: uid
+			}
+		}).then(function(votes){
+			if (votes.length==0) {
+				Vote.create({
+					attractionId:aid,
+					boardId:bid,
+					uid:uid
+				}).then(function() {
+					res.send("Success!!!!");
+				});
+			}
+			else {
+				res.send("Already voted");
+			}
+		});
+	},
 	createBoard: function(req, res) {
 		var name = req.body.name;
 		var invited = req.body.invited;
-		Board.create({name: name, userId: 2}).then(function(board) {
+		var uid = Number(req.cookies['user_id']);
+		Board.create({name: name, userId: uid}).then(function(board) {
+			var queue = invited.length;
 			var bid = board.id;
 			invited.forEach(function(friend_id) {
-				Group.create({
-					userId: friend_id,
-					boardId: bid
-				}).then(function(group) {
-					res.send('group created successfully');
-				})
+				if (uid !== friend_id) {
+					Group.create({
+						userId: friend_id,
+						boardId: bid
+					}).then(function(group) {
+						queue--;
+						if (queue === 0)
+							res.send('group created successfully');
+					})
+				}
 			})
 		})
 	},

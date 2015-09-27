@@ -10,6 +10,12 @@
 
   <title>OnboardMe</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+  <script type='text/javascript'>
+    var id = document.cookie.split('user_id=');
+    if (id[1]) {
+      window.location = 'boards.html';
+    } 
+  </script>
 </head>
 
 <body class="one-col">
@@ -24,7 +30,7 @@
 
             <div class="index-login-menu">
 
-              <a class="facebook-login">
+              <a class="facebook-login" id="facebook-login">
                   <i class="fa fa-facebook-square"></i>&nbsp;&nbsp;Log in with Facebook
               </a>
 
@@ -40,7 +46,7 @@
         </div>
 
 </div>
-
+  <script src="js/landing.js"></script>
 
 </body>
 </html>

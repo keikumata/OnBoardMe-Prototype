@@ -59,7 +59,7 @@
   	// iframe.marginwidth ="0";
   	// iframe.width="328";
   	// iframe.height="375";
-  	iframe.src="http://maps.google.com/maps?z=12&t=m&q=loc:" + coordinate[0] + "+" + coordinate[1] + "&output=embed"; 
+  	iframe.src="https://maps.google.com/maps?z=12&t=m&q=loc:" + coordinate[0] + "+" + coordinate[1] + "&output=embed"; 
 
 
   	// <div><small><a href="http://embedgooglemaps.com">embedgooglemaps.com</a></small></div><div><small><a href="http://premiumlinkgenerator.com/nitroflare-org">nitroflare premium link generator</a></small></div></iframe>

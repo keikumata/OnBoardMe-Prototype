@@ -20,15 +20,55 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
-var User = sequelize.define('user', {
-  name: Sequelize.STRING,
-  fbid: Sequelize.STRING,
-  img: Sequelize.STRING,
+var Vote = sequelize.define('vote', {
+  uid: Sequelize.INTEGER,
+  attractionId: Sequelize.INTEGER,
+  boardId: Sequelize.INTEGER,
 });
 
-var Board = sequelize.define('board', {
-  name: Sequelize.STRING,
+Vote.findAll({
+
+}).then(function(vote) {
+  console.log(vote);
 });
+// Vote.findAll({
+//       where: {
+//         boardId : 20
+//       }
+//     }).then(function(votes){
+//       var map = {};
+//       for (var j=0; j<votes.length;j++) {
+//         var temp = "" + votes[j].attractionId;
+//         if (map[temp]) {
+//           map[temp]++;
+//         }
+//         else {
+//           map[temp] = 1;
+//         }
+//       }
+//       var result = JSON.stringify(map);
+//       console.log(map);
+//     });
+
+// var votes = [{uid: 0, attractionId: 5, boardId: 1},{uid: 2, attractionId: 3, boardId: 4},{uid: 1, attractionId: 2, boardId: 3},{uid: 2, attractionId: 1, boardId: 6}];
+// for (var i=0; i<votes.length;i++) {
+//   Vote.create({
+//     uid:votes[i].uid,
+//     attractionId:votes[i].attractionId,
+//     boardId:votes[i].boardId
+//   }).then(function(vote){
+//     console.log(vote);
+//   });
+// }
+// var User = sequelize.define('user', {
+//   name: Sequelize.STRING,
+//   fbid: Sequelize.STRING,
+//   img: Sequelize.STRING,
+// });
+
+// var Board = sequelize.define('board', {
+//   name: Sequelize.STRING,
+// });
 
 // User.hasMany(Board,{foreignkey: 'creator'});
 // Board.belongsTo(User, {foreignkey: 'creator'})
