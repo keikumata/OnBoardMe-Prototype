@@ -20,11 +20,11 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
-// var User = sequelize.define('user', {
-//   name: Sequelize.STRING,
-//   fbid: Sequelize.STRING,
-//   img: Sequelize.STRING,
-// });
+var User = sequelize.define('user', {
+  name: Sequelize.STRING,
+  fbid: Sequelize.STRING,
+  img: Sequelize.STRING,
+});
 
 var Board = sequelize.define('board', {
   name: Sequelize.STRING,
@@ -51,28 +51,38 @@ var Board = sequelize.define('board', {
 //   boardId: Sequelize.INTEGER,
 // });
 
-var Group = sequelize.define('group', {
-  userId: Sequelize.INTEGER,
-  boardId: Sequelize.INTEGER,
-});
+// var Group = sequelize.define('group', {
+//   userId: Sequelize.INTEGER,
+//   boardId: Sequelize.INTEGER,
+// });
 
-Group.findAll({
-  where: {
-    userId: 1
-  }
-}).then(function(relation) {
-  for (var i = 0; i < relation.length; i++) {
-    var bid = relation[i].boardId;
-    Board.findAll({
-      where: {
-        id: bid
-      }
-    }).then(function(board) {
-      console.log(board[0].name);
-    })
+// Group.findAll({
+//   where: {
+//     userId: 1
+//   }
+// }).then(function(relation) {
+//   for (var i = 0; i < relation.length; i++) {
+//     var bid = relation[i].boardId;
+//     Board.findAll({
+//       where: {
+//         id: bid
+//       }
+//     }).then(function(board) {
+//       console.log(board[0].name);
+//     })
 
-  }
-})
+//   }
+// })
+
+
+// User.destroy({
+//   where: {
+//     id: 6
+//   }
+// }).then(function(user) {
+//   console.log(user);
+// })
+
 
 // var name = 'Fall Break';
 //     var invited = [1,2];
