@@ -123,6 +123,68 @@ textarea{
 	left: 0;
 }
 
+
+/* INDEX */
+
+.index-background{
+	display: block;
+	background-size: cover;
+	background-position: center;
+	height:100%;
+	width:auto;
+}
+
+.index-title{
+display: block;
+width:100%;
+text-align: center;
+padding: 140px 0px 100px 0px;
+font-size: 50px;
+color:#fff;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.index-login-menu{
+display: block;
+width:100%;
+text-align: center;
+padding: 160px 0px !important;
+}
+
+
+.facebook-login{
+	display: block;
+	text-align: center;
+	box-shadow: 0 0 0 1px #15427c;
+	border-radius: 3px;
+	margin: 15px auto;
+	padding: 12px 8px;
+	width: 75%;
+	border-bottom: 2px solid rgba(0,0,0,0.2);
+	background-color: #3B5998;
+	color: #fff;
+	font-size: 15px;
+	line-height: 18px;
+
+}
+
+.email-login{
+	display: block;
+	text-align: center;
+	box-shadow: 0 0 0 1px #FF9500;
+	border-radius: 3px;
+	margin: 10px auto;
+	padding: 12px 8px;
+	width: 75%;
+	border-bottom: 2px solid rgba(0,0,0,0.2);
+	background-color: #FF5E3A;
+	color: #fff;
+	font-size: 15px;
+	line-height: 18px;
+
+}
+
+
 /* PAGE TOP */
 
 .top-page{
