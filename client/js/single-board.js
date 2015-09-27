@@ -2,7 +2,7 @@ var parameters = location.search.substring(1).split("&");
 var bid = parameters[0];
 $.get("/boardinfo?"+"bid="+bid, function(data) {
 	
-};
+});
 
 var single_board_wrapper_title = document.getElementById("single-board-title");
 single_board_wrapper_title.innerHTML = "some title"; // temp
