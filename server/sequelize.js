@@ -23,6 +23,7 @@ sequelize
 var User = sequelize.define('user', {
   name: Sequelize.STRING,
   fbid: Sequelize.STRING,
+  img: Sequelize.STRING,
 });
 
 var Board = sequelize.define('board', {
@@ -63,7 +64,7 @@ Board.belongsTo(User, {foreignkey: 'creator'})
 //   })
 // }
 // 
-var array = [
+var events = [
 {},
 {},
 {},
@@ -125,12 +126,12 @@ var array = [
 // });
 
 
-// User.findAll({
-// }).then(function(user) {
-//   for (var i =0; i < user.length; i++) {
-//     console.log(user[i].dataValues.name);
-//   }
-// });
+User.findAll({
+}).then(function(user) {
+  for (var i =0; i < user.length; i++) {
+    console.log(user[i].dataValues.img);
+  }
+});
 // var Friend = sequelize.define('friend', {
 //   uid: Sequelize.STRING,
 //   bid: Sequelize.STRING,

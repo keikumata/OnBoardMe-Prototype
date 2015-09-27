@@ -102,7 +102,7 @@ module.exports = {
 		})
 	},	
 	getBoardInfo: function(req, res) {
-
+		
 	},
 	createBoard: function(req, res) {
 		var user_id = req.cookies.user_id;
