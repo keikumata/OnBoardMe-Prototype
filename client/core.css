@@ -109,13 +109,13 @@ textarea{
 
 
 .shadow {
-	z-index: 1;
+	z-index: 0;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…gd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g);
 	background: -webkit-gradient(linear,50% 0,50% 100%,color-stop(50%,rgba(0,0,0,.4)),color-stop(100%,rgba(0,0,0,.8)));
-	background: -webkit-linear-gradient(rgba(0,0,0,.4) 95%,rgba(0,0,0,.8) 100%);
-	background: -moz-linear-gradient(rgba(0,0,0,.4) 95%,rgba(0,0,0,.8) 100%);
-	background: -o-linear-gradient(rgba(0,0,0,.4) 95%,rgba(0,0,0,.8) 100%);
-	background: linear-gradient(rgba(0,0,0,.4) 95%,rgba(0,0,0,.8) 100%);
+	background: -webkit-linear-gradient(rgba(0,0,0,.2) 95%,rgba(0,0,0,.8) 100%);
+	background: -moz-linear-gradient(rgba(0,0,0,.2) 95%,rgba(0,0,0,.8) 100%);
+	background: -o-linear-gradient(rgba(0,0,0,.2) 95%,rgba(0,0,0,.8) 100%);
+	background: linear-gradient(rgba(0,0,0,.2) 95%,rgba(0,0,0,.3) 100%);
 	bottom: 0;
 	right: 0;
 	position: absolute;
@@ -166,15 +166,39 @@ textarea{
 }
 
 #search{
-	display: block;
-	margin:10px auto;
-	width:90%;
-	padding: 13px;
-	font-size: 16px;
-	border: 1px solid #c4c4c4;
-	border-radius: 2px;
-	background-color: #fff;
-	color: #565a5c;
+display: block;
+margin:10px auto;
+width:90%;
+padding: 13px 13px 13px 30px;
+font-size: 16px;
+border: 1px solid #c4c4c4;
+border-radius: 2px;
+background-color: #fff;
+color: #565a5c;
+background: url('http://findicons.com/files/icons/1389/g5_system/32/toolbar_find.png') #eee;
+background-size: 17px 17px;
+background-repeat: no-repeat;
+background-position: 6px 50%;
+}
+
+
+.top-page-tag{
+display: block;
+width: 100%;
+text-align: center;
+}
+
+
+.recommendation-tag{
+border-radius: 17px;
+width: 50%;
+padding: 10px 15px;
+background-color: #ff5e3a;
+color: #fff;
+display: block;
+margin: 0 auto;
+position: relative;
+bottom: -10px;
 }
 
 /* FEEDS */
@@ -222,6 +246,7 @@ textarea{
 	bottom:0px;
 	background-color: #fff;
 	border-top: 2px solid #eee;
+	z-index: 100000;
 }
 
 .footer-link{
@@ -282,8 +307,30 @@ textarea{
 	clear: both;
 }
 
+.add-place-icon{
+display: block;
+float: left;
+width: 33%;
+}
+
+.add-place-icon .fa{
+font-size: 35px;
+position: relative;
+margin-top: 40px;
+color:#ccc;
+}
+
+.add-place-icon .fa-share-alt{
+text-align: right;
+float: right;
+}
+
+.add-flag-o .fa-flag-o{
+text-align: left;
+}
+
 .add-place{
-	width: 100%;
+	width: 33%;
 	display: block;
 	float: left;
 	text-align:center;
@@ -691,6 +738,7 @@ textarea{
 	display: table;
 	position: relative;
 	width: 100%;
+	z-index: 1000;
 }
 
 .city-image{
@@ -1132,4 +1180,52 @@ padding: 10px;
     overflow-x:auto;
     position:fixed;
     height: 80%;
+}
+
+
+
+/* RECOMMENDATIONS */
+
+.recommendations-wrapper{
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-top:15px;
+}
+
+.recommendations-title{
+display: block;
+text-align: center;
+font-size: 14px;
+font-weight: bold;
+padding: 20px;
+border-radius: 17px;
+width: 70%;
+padding: 10px 15px;
+background-color: #ff5e3a;
+color: #fff;
+margin: 0px auto;
+position: relative;
+bottom: -15px;
+z-index: 3;
+}
+
+
+/* SPLIT */
+
+.split-square-wrapper{
+	display: block;
+	float: left;
+	width: 100%;
+	padding: 10px;
+}
+
+.split-square{
+width: 50%;
+float:left;
+display: inline-block;
+padding: 10px;
+border: 1px solid #eee;
+font-size: 18px;
+font-weight: bold;
 }

@@ -1,0 +1,140 @@
+<!DOCTYPE>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="core.css">
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <title>OnboardMe</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+</head>
+
+<body class="one-col">
+
+  <div id="doc" class="">
+    <div id="page-outer">
+      <div class="top-page">
+              <div class="top-page-wrapper">
+                <h1 class="top-page-title">
+                  <img class="top-page-image" src="img/logo.png"></img>
+                </h1>
+        </div>
+    </div>
+
+    <div id="page-container" class="wrapper">
+      <!-- FEED PRINCIPAL MEIO -->
+      <div id="body_main" class="content-main">
+
+          <div class="checkout-wrapper">
+
+            <div class="friends-list">
+
+            <div class="friends-list-title" style="background-color:#4285f4; padding:10px; color:#fff;">
+                Summary - London
+            </div>
+
+          <div class="friends-list">
+
+            <h2 style="margin:20px auto; text-align:left;">
+                Who should pay?
+            </h2>
+
+
+            <div class="friend">
+              <div class="friend-photo">
+                <img src="https://media.licdn.com/media/AAEAAQAAAAAAAAKxAAAAJGUwMTA5ZjcxLTNlNjAtNDc2NC04ODVmLTBlODNiMGI0MzcyNQ.jpg" class="friend-photo-img">
+              </div>
+              <div class="friend-name">
+                Kei Yoshikoshi
+              </div>
+
+              <div class="clear">
+
+              </div></div>
+
+              <div class="friend"><div class="friend-photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/427697_385784991433450_85817638_n.jpg?oh=63d50b811195a450d670eefb2c58b4e2&amp;oe=569FAD31" class="friend-photo-img"></div><div class="friend-name">Jae Hun Ro</div>
+
+              <div class="clear"></div></div>
+
+              <div class="friend"><div class="friend-photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xal1/v/t1.0-9/405140_407134742652633_1463058000_n.jpg?oh=41ff4ac7e82477271b45e8eafc2f109c&amp;oe=56A9E699" class="friend-photo-img"></div><div class="friend-name">Marcos Arata</div>
+              <div class="clear"></div></div>
+
+          </div>
+
+
+          <div class="friend">
+
+          <h2 style="margin:20px auto; text-align:left;">
+              Split?
+          </h2>
+            <form><p><input type="checkbox" id="0"><label for="0">Split Evenly</label></p></form>
+            <form><p><input type="checkbox" id="0"><label for="0">Split Manually</label></p></form>
+
+          </div>
+
+
+
+          <div class="friend">
+
+          <h2 style="margin:20px auto; text-align:left;">
+              Total Amount
+          </h2>
+
+          <h2 style="margin:20px auto; text-align:left;">
+               £ 133
+          </h2>
+
+          <a class="invite-button" href="split.html" style="display:block; text-align:center; width:100%;">BOOK NOW</a>
+
+          </div>
+
+          </div>
+
+
+     </div>
+
+   </div>
+
+   <div class="footer">
+    <div class="footer-menu">
+        <a href="index.html">
+          <div class="footer-link">
+            <i class="fa fa-home fa-2x"></i> Home
+          </div>
+        </a>
+
+        <div class="footer-menu">
+            <a href="search.html">
+            <div class="footer-link">
+              <i class="fa fa-search fa-2x"></i> Search
+            </div>
+          </a>
+
+          </div>
+
+
+        <a href="index_v2.html">
+          <div class="footer-link">
+            <i class="fa fa-calendar-check-o fa-2x"></i>Boards
+          </div>
+        </a>
+  </div>
+</div>
+</div>
+
+<script>
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644}, zoom: 8 });
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDowOdSjsY46_xhL7yXCRVQ4PvSB8isjyk&callback=initMap"
+async defer></script>
+<script src="js/board.js"></script>
+</body>
+</html>
