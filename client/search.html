@@ -1,0 +1,112 @@
+<!DOCTYPE>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="core.css">
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.js"></script>
+
+<title>OnboardMe</title>
+
+</head>
+
+<body class="one-col">
+
+<div id="doc" class="">
+
+    <div id="page-outer">
+
+			<div class="top-page">
+
+				<div class="top-page-wrapper">
+				        <h1 class="top-page-title">
+                  <i class="fa fa-compass fa-2x"></i> OnboardMe!
+                </h1>
+				</div>
+
+			</div>
+
+
+      <div id="page-container" class="wrapper">
+
+			   <!-- FEED PRINCIPAL MEIO -->
+			   <div id="body_main" class="content-main">
+
+
+          <!-- SEARCH LIST -->
+            <div class="search-wrapper">
+
+              <div class="">
+              <label class="search-input-label">
+              <i class="fa fa-searc"></i>
+              </label>
+              <input class="search-input2" placeholder="When are you going?"></input>
+              </div>
+
+
+              <input class="search-input" placeholder="When?"></input>
+
+              <input class="search-input" placeholder="Group size"></input>
+
+              <input class="search-input" placeholder="Budget per person"></input>
+
+              <div class="search-wrapper-button">
+                <a class="search-button">Search</a>
+              </div>
+
+              <div class="clear"></div>
+
+            </div>
+
+
+
+      </div>
+
+    </div>
+
+
+    <div class="footer">
+
+      <div class="footer-menu">
+
+          <div class="footer-link">
+            <i class="fa fa-home fa-2x"></i> Home
+          </div>
+
+          <div class="footer-link">
+            <i class="fa fa-search fa-2x"></i> Search
+          </div>
+
+
+          <div class="footer-link">
+            <i class="fa fa-calendar-check-o fa-2x"></i> <a href="login.html"> Boards </a>
+          </div>
+
+      </div>
+
+    </div>
+
+</div>
+
+<script>
+$(document).ready(function(){
+
+	//Check to see if the window is top if not then display button
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 288) {
+			$('.city-title-wrapper-stick').fadeIn();
+		} else {
+			$('.city-title-wrapper-stick').fadeOut();
+		}
+	});
+
+
+});
+</script>
+
+
+</body>
+</html>
