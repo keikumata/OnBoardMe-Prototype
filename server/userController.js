@@ -180,7 +180,35 @@ module.exports = {
 		})
 	},	
 	getBoardInfo: function(req, res) {
-
+		var bid = Number(req.query.bid);
+		Board.findAll({
+			where: {
+				id: bid
+			}
+		}).then(function(board) {
+			var obj = {events:[], board:{}};
+			obj.board.name = board[0].name;
+			AttractionOption.findAll({
+				where: {
+					boardId: bid
+				}
+			}).then(function(attraction) {
+				for (var i = 0; i < attraction.length; i++) {
+					var aid = attraction[i].attractionId;
+					Attraction.findAll({
+						where: {
+							id: aid
+						}
+					}).then(function(e) {
+						for (var j = 0; j < e.length; j++) {
+							obj.events.push({name: e[j].name, img: e[j].img, aid: e[j].id});
+						}	
+						var str = JSON.stringify(obj);
+						res.send(str);
+					})
+				}
+			})
+		})
 	},
 	createBoard: function(req, res) {
 		var user_id = req.cookies.user_id;

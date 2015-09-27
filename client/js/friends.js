@@ -68,6 +68,9 @@
   }
 }
 
+var boardinput = document.getElementById('search');
+var invitebutton = document.getElementById('invite-button');
+
 
 // <div class="friend">
 
