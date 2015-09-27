@@ -20,41 +20,42 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
-var User = sequelize.define('user', {
-  name: Sequelize.STRING,
-  fbid: Sequelize.STRING,
-  img: Sequelize.STRING,
-});
+// var User = sequelize.define('user', {
+//   name: Sequelize.STRING,
+//   fbid: Sequelize.STRING,
+//   img: Sequelize.STRING,
+// });
 
-var Board = sequelize.define('board', {
-  name: Sequelize.STRING,
-});
+// var Board = sequelize.define('board', {
+//   name: Sequelize.STRING,
+// });
 
-User.hasMany(Board,{foreignkey: 'creator'});
-Board.belongsTo(User, {foreignkey: 'creator'})
+// User.hasMany(Board,{foreignkey: 'creator'});
+// Board.belongsTo(User, {foreignkey: 'creator'})
 
-var City = sequelize.define('city', {
-  name: Sequelize.STRING,
-  img: Sequelize.STRING,
-});
+// var City = sequelize.define('city', {
+//   name: Sequelize.STRING,
+//   img: Sequelize.STRING,
+// });
 
-var Attraction = sequelize.define('attraction', {
-  name: Sequelize.STRING,
-  coordinates: Sequelize.STRING,
-  location: Sequelize.STRING,
-  price: Sequelize.STRING,
-  img: Sequelize.STRING,
-});
+// var Attraction = sequelize.define('attraction', {
+//   name: Sequelize.STRING,
+//   coordinates: Sequelize.STRING,
+//   location: Sequelize.STRING,
+//   price: Sequelize.STRING,
+//   img: Sequelize.STRING,
+// });
 
 var AttractionOption = sequelize.define('attractionoption', {
   attractionId: Sequelize.INTEGER,
-  
+  boardId: Sequelize.INTEGER,
 });
 
+AttractionOption.findAll({}).then(function(res) {console.log(res)});
 
 
-City.hasMany(Attraction, {foreignkey: 'city'});
-Attraction.belongsTo(City, {foreignkey: 'city'});
+// City.hasMany(Attraction, {foreignkey: 'city'});
+// Attraction.belongsTo(City, {foreignkey: 'city'});
 
 // var array = [
 // {name: 'London', img: 'http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg'}, 

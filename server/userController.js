@@ -50,6 +50,11 @@ var Attraction = sequelize.define('attraction', {
 City.hasMany(Attraction, {foreignkey: 'city'});
 Attraction.belongsTo(City, {foreignkey: 'city'});
 
+var AttractionOption = sequelize.define('attractionoption', {
+  attractionId: Sequelize.INTEGER,
+  boardId: Sequelize.INTEGER,
+});
+
 module.exports = {
 	loginPage: function(req, res) {
 		res.sendFile(path.resolve(__dirname + '/../client/login.html'));
@@ -139,6 +144,23 @@ module.exports = {
 	pinToBoard: function(req, res) {
 		var aid = Number(req.query.aid);
 		var bid = Number(req.query.bid);
+		AttractionOption.findAll({
+			where: {
+				attractionId: aid,
+				boardId: bid,
+			}
+		}).then(function(result) {
+			if (result.length) {
+				res.send('Already added');
+			} else {
+				AttractionOption.create({
+					attractionId: aid,
+					boardId: bid,
+				}).then(function(rel) {
+					res.send('Successfully added');
+				});
+			}
+		})
 		
 	},
 	getBoards: function(req, res) {

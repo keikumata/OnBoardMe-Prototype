@@ -1,5 +1,6 @@
   var href = window.location.href;
   var aid = href.split("aid=")[1];
+  var once = true;
 
   $.get("/eventinfo?"+"aid="+aid, function(data) {
   	var eventobject = JSON.parse(data);
@@ -73,13 +74,16 @@ var plus_button = document.getElementById('plus-button');
 plus_button.onclick = function() {
 	$.get('/board').then(function(boards) {
 		var array = JSON.parse(boards).boards;
-		array.forEach(function(el) {
-			var select = document.getElementById("select-drop");
-			var option = document.createElement("option");
-			option.text = el.name;
-			option.id = el.bid;
-			select.add(option);
-		})
+		if (once){
+			array.forEach(function(el) {
+				var select = document.getElementById("select-drop");
+				var option = document.createElement("option");
+				option.text = el.name;
+				option.id = el.bid;
+				select.add(option);
+			})
+			once = false;
+		}
 		document.getElementById('popup_wrapper').style.display = "block";
 	});
 };
