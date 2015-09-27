@@ -13,10 +13,32 @@ $.get("/city", function(data) {
 	setUpDivs(names,ids,imageurls);
 })
 
+
+$('#search').keyup(function() {
+	var $rows = $('.title');
+	// var $dynamic = $('#dynamic')
+	var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+	reg = RegExp(val, 'i'),
+	text;
+	
+
+	$rows.show().filter(function() {
+		text = $(this).text().replace(/\s+/g, ' ');
+		console.log(text);
+		return !reg.test(text);
+	}).hide();
+});
+// $(function(){
+// 	$('#search').keyup(function() {
+// 		$("#dynamic").find("." + this.id).toggle();   
+// 	});
+// });
+
 function setUpDivs(names, ids, imageurls) {
 	for (var i=0; i<names.length; i++) {
 		var title = document.createElement("div");
 		title.className = "title";
+		// title["data-filter"] = names[i];
 		title.innerHTML = names[i];
 
 		var a = document.createElement("a");
