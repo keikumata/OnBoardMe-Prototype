@@ -90,9 +90,9 @@
 
       var object = {userid:userID, name:response.name};
       $.post("/login",object).then(function(response) {
-
-
+  
       });
+    });
     FB.api('/me/friends', function(response) {
       console.log(response);
     });
