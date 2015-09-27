@@ -22,7 +22,13 @@ app.post('/login', userController.login);
 
 app.get('/city', userController.getCities);
 
+app.get('/attraction', userController.getAttractions);
+
+app.get('/eventinfo', userController.getEventInfo);
+
 app.get('/board', userController.getBoards);
 app.get('/boardinfo', userController.getBoardInfo);
+
+app.get('/friend', userController.getFriends);
 
 app.listen(process.env.PORT || 8000);

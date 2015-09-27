@@ -20,22 +20,34 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
-// var User = sequelize.define('user', {
-//   name: Sequelize.STRING,
-//   fbid: Sequelize.STRING,
-// });
+var User = sequelize.define('user', {
+  name: Sequelize.STRING,
+  fbid: Sequelize.STRING,
+  img: Sequelize.STRING,
+});
 
-// var Board = sequelize.define('board', {
-//   name: Sequelize.STRING,
-// });
+var Board = sequelize.define('board', {
+  name: Sequelize.STRING,
+});
 
-// User.hasMany(Board,{foreignkey: 'creator'});
-// Board.belongsTo(User, {foreignkey: 'creator'})
+User.hasMany(Board,{foreignkey: 'creator'});
+Board.belongsTo(User, {foreignkey: 'creator'})
 
 var City = sequelize.define('city', {
   name: Sequelize.STRING,
   img: Sequelize.STRING,
 });
+
+var Attraction = sequelize.define('attraction', {
+  name: Sequelize.STRING,
+  coordinates: Sequelize.STRING,
+  location: Sequelize.STRING,
+  price: Sequelize.STRING,
+  img: Sequelize.STRING,
+});
+
+City.hasMany(Attraction, {foreignkey: 'city'});
+Attraction.belongsTo(City, {foreignkey: 'city'});
 
 // var array = [
 // {name: 'London', img: 'http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg'}, 
@@ -53,14 +65,95 @@ var City = sequelize.define('city', {
 //   })
 // }
 
-City.findAll({}).then(function(city) {
-  console.log(city);
-})
+// var events = [
+// {name: "British Museum", coordinates: "51.5195-0.1269", location: "Bloomsbury", price: "£21", img: 'http://www.qualitycrown.com/images/london-british-museum.jpg'},
+// {name: "Victoria and Albert Museum", coordinates: "51.4963-0.1721", location: "Knightsbridge", price: "£75", img: 'http://www.asianimage.co.uk/resources/images/4162743/'},
+// {name: "Churchill War Rooms", coordinates: "51.5021-0.1290", location: "Westminster", price: "£42", img: 'http://www.theexhibitionlist.com/wp-content/uploads/2013/03/churchill-museum-cabinet-war-room.jpeg'},
+// {name: "Houses of Parliament", coordinates: "51.4992-0.1247", location: "Westminster", price: "£57", img: 'http://www.e-architect.co.uk/images/jpgs/london/houses_parliament_nw080609_2.jpg'},
+// ];
+
+// for (var i = 0; i < events.length; i++) {
+//   Attraction.create({
+//     name: events[i].name,
+//     coordinates: events[i].coordinates,
+//     location: events[i].location,
+//     price: events[i].price,
+//     img: events[i].img,
+//     cityId: 1,
+//   }).then(function(attraction) {
+//     console.log(attraction);
+//   })
+// }
+
+// var users = [
+// {name: "Kei Yoshikoshi", img: "https://media.licdn.com/media/AAEAAQAAAAAAAAKxAAAAJGUwMTA5ZjcxLTNlNjAtNDc2NC04ODVmLTBlODNiMGI0MzcyNQ.jpg"},
+// {name: "Jae Hun Ro", img: "https://scontent.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/427697_385784991433450_85817638_n.jpg?oh=63d50b811195a450d670eefb2c58b4e2&oe=569FAD31"},
+// {name: "Marcos Arata", img: "https://scontent.xx.fbcdn.net/hphotos-xal1/v/t1.0-9/405140_407134742652633_1463058000_n.jpg?oh=41ff4ac7e82477271b45e8eafc2f109c&oe=56A9E699"},
+// {name: "Maria Kucheryavaya", img: "https://scontent.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/10653716_953956827951199_4875711962003210075_n.jpg?oh=aa6b29122db3aac1e57092e2ec991ea1&oe=569929C3"},
+// {name: "Richie Dawes", img: "https://scontent.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/10563109_10152402317942968_8277816983192594913_n.jpg?oh=4f9ba729406e25027e0dbfddb2cbf63c&oe=56A4067C"},
+// ];
+
+// for (var i = 0; i < users.length; i++) {
+//   User.create({
+//     name: users[i].name,
+//     img: users[i].img
+//   });
+// }
+
+// var boards = [
+// {name: "Spring Break", userId: 1},
+// {name: "Graduation", userId: 1},
+// {name: "American Bars", userId: 1},
+// {name: "London Pubs", userId: 1},
+// {name: "Birthday", userId: 1},
+// ];
+
+// for (var i = 0; i < boards.length; i++) {
+//   Board.create({
+//     name: boards[i].name,
+//     userId: boards[i].userId
+//   });
+// }
+
+// var boards = [
+// {name: "Winter Break", userId: 2},
+// {name: "World Cup", userId: 2},
+// {name: "Backpack", userId: 2},
+// {name: "Bday", userId: 2},
+// ];
+
+// for (var i = 0; i < boards.length; i++) {
+//   Board.create({
+//     name: boards[i].name,
+//     userId: boards[i].userId
+//   });
+// }
+
+// Attraction.findAll({
+//   where: {
+//     cityId: 1
+//   }
+// }).then(function(att) {
+//   console.log(att);
+// })
+
+
+// City.findAll({}).then(function(city) {
+//   console.log(city);
+// })
 
 // Board.findAll({
 // }).then(function(user) {
 //   for (var i =0; i < user.length; i++) {
 //     console.log(user[i].dataValues.name);
+//   }
+// });
+
+
+// User.findAll({
+// }).then(function(user) {
+//   for (var i =0; i < user.length; i++) {
+//     console.log(user[i].img);
 //   }
 // });
 // var Friend = sequelize.define('friend', {
@@ -80,6 +173,31 @@ City.findAll({}).then(function(city) {
 // });
 
 
+// City.findAll({
+//         where: {
+//           id: 1
+//         }
+//       }).then(function(city) {
+//         console.log(city[0].name);
+        
+        
+//       });
+//       
+//       
+
+// Attraction.findAll({
+//       where: {
+//         id: 1
+//       }
+//     }).then(function(e) {
+//       var obj = {};
+//       obj.name = e[0].name;
+//       obj.location = e[0].location;
+//       obj.coordinate = e[0].coordinates;
+//       obj.price = e[0].price;
+//       obj.img = e[0].img;
+//       console.log(obj);
+//     })
 
 // sequelize
 //   .sync({ force: true })

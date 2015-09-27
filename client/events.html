@@ -2,78 +2,78 @@
 <html>
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="core.css">
-<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="core.css">
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 
-<title>OnboardMe</title>
+  <title>OnboardMe</title>
 
 </head>
 
 <body class="one-col">
 
-<div id="doc" class="">
+  <div id="doc" class="">
 
     <div id="page-outer">
 
-			<div class="top-page">
+     <div class="top-page">
 
-				<div class="top-page-wrapper">
-				        <h1 class="top-page-title">
-                  <i class="fa fa-compass fa-2x"></i> OnboardMe!
-                </h1>
-				</div>
+      <div class="top-page-wrapper">
+        <h1 class="top-page-title">
+          <i class="fa fa-compass fa-2x"></i> OnBoardMe!
+        </h1>
+      </div>
 
-			</div>
-
-
-      <div id="page-container" class="wrapper">
-
-			   <!-- FEED PRINCIPAL MEIO -->
-			   <div id="body_main" class="content-main">
-
-          <!-- CITY WRAPPER -->
-
-           <div class="city-title-wrapper">
-             <div class="city-image" style="background-image:url('http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg')">
-             <div class="city-title">
-               <div class="title">London</div>
-             </div>
-             </div>
-             <div class="clear"></div>
-          </div>
+    </div>
 
 
-          <div class="city-title-wrapper-stick" style="display:none;">
-            <div class="city-image-stick" style="background-image:url('http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg')">
-            <div class="city-title-stick">
-              <div class="title-stick">London</div>
-            </div>
-            </div>
+    <div id="page-container" class="wrapper">
 
-          <div class="events-filter">
-              FILTER <i class="fa fa-angle-down"></i>
-            </div>
+      <!-- FEED PRINCIPAL MEIO -->
+      <div id="body_main" class="content-main">
 
-            <div class="clear"></div>
+        <!-- CITY WRAPPER -->
+
+        <div class="city-title-wrapper">
+         <div id="city-image">
+           <div class="city-title">
+             <div id="title"></div>
+           </div>
          </div>
+         <div class="clear"></div>
+       </div>
 
 
-
-          <!-- FILTER BREAK -->
-
-          <div class="events-filter">
-            FILTER <i class="fa fa-angle-down"></i>
+       <div class="city-title-wrapper-stick" style="display:none;">
+        <div id="city-image-stick">
+          <div class="city-title-stick">
+            <div id="title-stick"></div>
           </div>
+        </div>
 
-          <!-- EVENTS LIST -->
+        <div class="events-filter">
+          FILTER <i class="fa fa-angle-down"></i>
+        </div>
 
-          <div class="events-wrapper">
+        <div class="clear"></div>
+      </div>
 
-          <div class="event">
+
+
+      <!-- FILTER BREAK -->
+
+      <div class="events-filter">
+        FILTER <i class="fa fa-angle-down"></i>
+      </div>
+
+      <!-- EVENTS LIST -->
+
+      <div class="events-wrapper">
+        <div id="dynamic-event"></div>
+          <!-- <div class="event">
             <div class="event-image" style="background-image:url('http://camaje.com/-/wp-content/uploads/2013/06/camaje-cooking-7.jpg')">
             <div class="event-title-wrapper">
               <div class="event-title">Recipease Jamie Oliver</div>
@@ -140,11 +140,11 @@
             </div>
             </div>
             <div class="clear"></div>
-          </div>
+          </div> -->
 
 
 
-       </div>
+        </div>
 
       </div>
 
@@ -155,27 +155,31 @@
 
       <div class="footer-menu">
 
+        <a href="index.html">
           <div class="footer-link">
             <i class="fa fa-home fa-2x"></i> Home
           </div>
+        </a>
 
+        <div class="footer-link">
+          <i class="fa fa-search fa-2x"></i> Search
+        </div>
+
+
+        <a href="boards.html">
           <div class="footer-link">
-            <i class="fa fa-search fa-2x"></i> Search
+            <i class="fa fa-calendar-check-o fa-2x"></i>Boards
           </div>
-
-
-          <div class="footer-link">
-            <i class="fa fa-calendar-check-o fa-2x"></i> <a href="login.html"> Boards </a>
-          </div>
+        </a>
 
       </div>
 
     </div>
 
-</div>
+  </div>
 
-<script>
-$(document).ready(function(){
+  <script>
+  $(document).ready(function(){
 
 	//Check to see if the window is top if not then display button
 	$(window).scroll(function(){
@@ -188,8 +192,8 @@ $(document).ready(function(){
 
 
 });
-</script>
-
+  </script>
+  <script src="js/events.js"></script>
 
 </body>
 </html>

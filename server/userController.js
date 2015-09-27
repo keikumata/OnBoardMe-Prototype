@@ -24,6 +24,7 @@ sequelize
 var User = sequelize.define('user', {
   name: Sequelize.STRING,
   fbid: Sequelize.STRING,
+  img: Sequelize.STRING,
 });
 
 var Board = sequelize.define('board', {
@@ -38,12 +39,22 @@ var City = sequelize.define('city', {
   img: Sequelize.STRING,
 });
 
+var Attraction = sequelize.define('attraction', {
+  name: Sequelize.STRING,
+  coordinates: Sequelize.STRING,
+  location: Sequelize.STRING,
+  price: Sequelize.STRING,
+  img: Sequelize.STRING,
+});
+
+City.hasMany(Attraction, {foreignkey: 'city'});
+Attraction.belongsTo(City, {foreignkey: 'city'});
+
 module.exports = {
 	loginPage: function(req, res) {
 		res.sendFile(path.resolve(__dirname + '/../client/login.html'));
 	},
 	login: function(req, res) {
-
 		var name = req.body.name;
 		var fbid = req.body.userid;
 		User.findAll({
@@ -65,6 +76,16 @@ module.exports = {
 			}
 		});
 	},
+	getFriends: function(req, res) {
+		User.findAll({}).then(function(user) {
+			var obj = {friends: []};
+			for (var i = 0; i < user.length; i++) {
+				obj.friends.push({name: user[i].name, img: user[i].img, uid: user[i].id});
+			}
+			var str = JSON.stringify(obj);
+			res.send(str);
+		})
+	},
 	getCities: function(req, res) {
 		City.findAll({}).then(function(city) {
 			var obj = {cities: []};
@@ -75,8 +96,48 @@ module.exports = {
 			res.send(str);
 		})
 	},
+	getAttractions: function(req, res) {
+		var cid = Number(req.query.cid);
+		Attraction.findAll({
+			where: {
+				cityId: cid
+			}
+		}).then(function(att) {
+			var obj = {attractions: [], city: {}};
+			for (var i = 0; i < att.length; i++) {
+				obj.attractions.push({name: att[i].name, img: att[i].img, price: att[i].price, location: att[i].location, aid: att[i].id});
+			}
+			City.findAll({
+				where: {
+					id: cid
+				}
+			}).then(function(city) {
+				obj.city.name = city[0].name;
+				obj.city.img = city[0].img;
+				var str = JSON.stringify(obj);
+				res.send(str);
+			});
+		})
+	},
+	getEventInfo: function(req, res) {
+		var aid = Number(req.query.aid);
+		Attraction.findAll({
+			where: {
+				id: aid
+			}
+		}).then(function(e) {
+			var obj = {};
+			obj.name = e[0].name;
+			obj.location = e[0].location;
+			obj.coordinates = e[0].coordinates;
+			obj.price = e[0].price;
+			obj.img = e[0].img;
+			var str = JSON.stringify(obj);
+			res.send(str);
+		})
+	},
 	getBoards: function(req, res) {
-		var userId = 1;
+		var userId = 2;
 		// var userId = req.cookie['user-id'];
 		Board.findAll({
 			where: {

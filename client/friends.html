@@ -2,67 +2,65 @@
 <html>
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="core.css">
-<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-<title>OnboardMe</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="core.css">
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+  <title>OnBoardMe</title>
 
 </head>
 
 <body class="one-col">
 
-<div id="doc" class="">
+  <div id="doc" class="">
 
     <div id="page-outer">
 
-			<div class="top-page">
+     <div class="top-page">
 
-				<div class="top-page-wrapper">
-				        <h1 class="top-page-title">
-                  <i class="fa fa-compass fa-2x"></i> OnboardMe!
-                </h1>
-				</div>
+      <div class="top-page-wrapper">
+        <h1 class="top-page-title">
+          <i class="fa fa-compass fa-2x"></i> OnBoardMe!
+        </h1>
+      </div>
 
-			</div>
-
-
-      <div id="page-container" class="wrapper">
-
-			   <!-- FEED PRINCIPAL MEIO -->
-			   <div id="body_main" class="content-main">
+    </div>
 
 
-          <div class="friends-wrapper">
+    <div id="page-container" class="wrapper">
 
-            <div class="friends-title">
+      <!-- FEED PRINCIPAL MEIO -->
+      <div id="body_main" class="content-main">
 
+
+
+        <div class="friends-wrapper">
+          <div class="friends-list-title">
+            Your new event crew
+          </div>
+          <div class="friends-title">
+            <div class="friends-list-subtitle">
+
+              Gether you tribe. Select friends from below to build up a guest list.
+            </div>
+
+            <div class="friends-list-sharer">
+              <i class="fa fa-facebook-official"></i>
+              <i class="fa fa-whatsapp"></i>
+              <i class="fa fa-envelope"></i>
+            </div>
+
+            <div class="friends-list">
 
               <div class="friends-list-title">
-              Your new event crew
+                Your friends list
               </div>
 
-              <div class="friends-list-subtitle">
-              Gether you tribe. Select friends from below to build up a guest list.
-              </div>
-
-              <div class="friends-list-sharer">
-                  <i class="fa fa-facebook-official"></i>
-                  <i class="fa fa-whatsapp"></i>
-                  <i class="fa fa-envelope"></i>
-              </div>
-
-              <div class="friends-list">
-
-                  <div class="friends-list-title">
-                  Your friends list
-                  </div>
-
-
-                  <!-- FRIEND 1 -->
-                  <div class="friend">
+              <div id="dynamic"></div>
+              <!-- FRIEND 1 -->
+                  <!-- <div class="friend">
 
                     <div class="friend-photo">
                       <img class="friend-photo-img" src="http://www.fox.com/sites/default/files/Avatar-NewGirl_1.jpg">
@@ -82,13 +80,13 @@
                     </div>
 
                     <div class="clear"></div>
-                  </div>
+                  </div> -->
 
 
 
 
                   <!-- FRIEND 2 -->
-                  <div class="friend">
+                  <!-- <div class="friend">
 
                     <div class="friend-photo">
                       <img class="friend-photo-img" src="http://www.fox.com/sites/default/files/Avatar-NewGirl_1.jpg">
@@ -108,26 +106,26 @@
                     </div>
 
                     <div class="clear"></div>
-                  </div>
+                  </div> -->
 
 
-                  <div class="friends-invite-button">
 
-                    <a class="invite-button">
-                      INVITE FRIENDS
-                    </a>
 
-                  </div>
 
+                </div>
+
+              </div>
+              <div class="friends-invite-button">
+
+                <a class="invite-button">
+                  INVITE FRIENDS
+                </a>
 
               </div>
 
             </div>
 
-
           </div>
-
-        </div>
 
 
         </div>
@@ -142,24 +140,28 @@
 
       <div class="footer-menu">
 
+        <a href="index.html">
           <div class="footer-link">
             <i class="fa fa-home fa-2x"></i> Home
           </div>
+        </a>
 
+        <div class="footer-link">
+          <i class="fa fa-search fa-2x"></i> Search
+        </div>
+
+
+        <a href="boards.html">
           <div class="footer-link">
-            <i class="fa fa-search fa-2x"></i> Search
+            <i class="fa fa-calendar-check-o fa-2x"></i>Boards
           </div>
-
-
-          <div class="footer-link">
-            <i class="fa fa-calendar-check-o fa-2x"></i> Boards
-          </div>
+        </a>
 
       </div>
 
     </div>
 
-</div>
-
+  </div>
+  <script src="js/friends.js"></script>
 </body>
 </html>
