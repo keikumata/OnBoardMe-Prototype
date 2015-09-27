@@ -24,6 +24,7 @@ sequelize
 var User = sequelize.define('user', {
   name: Sequelize.STRING,
   fbid: Sequelize.STRING,
+  img: Sequelize.STRING,
 });
 
 var Board = sequelize.define('board', {
@@ -102,7 +103,7 @@ module.exports = {
 		})
 	},	
 	getBoardInfo: function(req, res) {
-		
+
 	},
 	createBoard: function(req, res) {
 		var user_id = req.cookies.user_id;
