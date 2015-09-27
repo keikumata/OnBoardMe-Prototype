@@ -33,8 +33,9 @@ var Board = sequelize.define('board', {
 User.hasMany(Board,{foreignkey: 'creator'});
 Board.belongsTo(User, {foreignkey: 'creator'})
 
-var Country = sequelize.define('country', {
+var City = sequelize.define('city', {
   name: Sequelize.STRING,
+  img: Sequelize.STRING,
 });
 
 module.exports = {
@@ -42,6 +43,7 @@ module.exports = {
 		res.sendFile(path.resolve(__dirname + '/../client/login.html'));
 	},
 	login: function(req, res) {
+
 		var name = req.body.name;
 		var fbid = req.body.userid;
 		User.findAll({
@@ -63,6 +65,35 @@ module.exports = {
 			}
 		});
 	},
+	getCities: function(req, res) {
+		City.findAll({}).then(function(city) {
+			var obj = {cities: []};
+			for (var i = 0; i < city.length; i++) {
+				obj.cities.push({name: city[i].name, cid: city[i].id, img: city[i].img});
+			}
+			var str = JSON.stringify(obj);
+			res.send(str);
+		})
+	},
+	getBoards: function(req, res) {
+		var userId = 1;
+		// var userId = req.cookie['user-id'];
+		Board.findAll({
+			where: {
+				userId: userId
+			}
+		}).then(function(response) {
+			var obj = {boards: []};
+			for (var i = 0; i < response.length; i++) {
+				obj.boards.push({name: response[i].dataValues.name, bid: response[i].dataValues.id});
+			}
+			var str = JSON.stringify(obj);
+			res.send(str);
+		})
+	},	
+	getBoardInfo: function(req, res) {
+
+	},
 	createBoard: function(req, res) {
 		var user_id = req.cookies.user_id;
 		Board.create({name: "Summer break", userId: user_id}).then(function(board) {
@@ -70,5 +101,10 @@ module.exports = {
 			res.send(board);
 		})
 	},
+	post: function(req, res) {
+		console.log(req.body);
+		var send = JSON.stringify(req.body);
+		res.send(send);
+	}
 };
 

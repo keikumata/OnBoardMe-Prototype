@@ -1,7 +1,16 @@
+var path = require('path');
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('sql291441', 'sql291441', 'tM2%dY3%', {
-  host: "sql2.freemysqlhosting.net",
-  port: 3306
+process.env.DATABASE_URL = 'postgres://abtjmthjdupiri:HEFpakJRCL0Muj4gztBmEmmsqj@ec2-54-217-202-108.eu-west-1.compute.amazonaws.com:5432/dcg3pq3ehk45a5';
+var match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
+sequelize = new Sequelize(match[5], match[1], match[2], {
+    dialect:  'postgres',
+    protocol: 'postgres',
+    port:     match[4],
+    host:     match[3],
+    logging: false,
+    dialectOptions: {
+        ssl: true
+    }
 });
 sequelize
 .authenticate()
@@ -11,30 +20,49 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
-var User = sequelize.define('user', {
+// var User = sequelize.define('user', {
+//   name: Sequelize.STRING,
+//   fbid: Sequelize.STRING,
+// });
+
+// var Board = sequelize.define('board', {
+//   name: Sequelize.STRING,
+// });
+
+// User.hasMany(Board,{foreignkey: 'creator'});
+// Board.belongsTo(User, {foreignkey: 'creator'})
+
+var City = sequelize.define('city', {
   name: Sequelize.STRING,
-  fbid: Sequelize.STRING,
+  img: Sequelize.STRING,
 });
 
-var Board = sequelize.define('board', {
-  name: Sequelize.STRING,
-});
+// var array = [
+// {name: 'London', img: 'http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg'}, 
+// {name: 'Paris', img: 'http://www.france.com/wp-content/uploads/2014/01/header.jpg'}, 
+// {name: 'Berlim', img: 'http://www.magariblu.com/wp-content/uploads/2013/08/1.-Berlim.jpg'}, 
+// {name: 'Venice', img: 'http://www.hurwitzjamesco.com/wp-content/uploads/2015/02/beauty_of_venice-wide.jpg'}, 
+// {name: 'New York', img: 'http://7-themes.com/data_images/out/75/7028459-new-york-sunrise-wallpaper.jpg'}];
 
-User.hasMany(Board,{foreignkey: 'creator'});
-Board.belongsTo(User, {foreignkey: 'creator'})
+// for (var i = 0; i < array.length; i++) {
+//   City.create({
+//     name: array[i].name,
+//     img: array[i].img,
+//   }).then(function(country) {
+//     console.log(country, 'country');
+//   })
+// }
 
-var Country = sequelize.define('country', {
-  name: Sequelize.STRING,
-});
+City.findAll({}).then(function(city) {
+  console.log(city);
+})
 
-User.findAll({
-	where: {
-		id: 3,
-	}
-}).then(function(user) {
-	console.log(user[0].dataValues.name, 'asdlkfjas');
-});
-
+// Board.findAll({
+// }).then(function(user) {
+//   for (var i =0; i < user.length; i++) {
+//     console.log(user[i].dataValues.name);
+//   }
+// });
 // var Friend = sequelize.define('friend', {
 //   uid: Sequelize.STRING,
 //   bid: Sequelize.STRING,
