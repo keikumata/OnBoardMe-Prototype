@@ -19,6 +19,6 @@ app.use(cookieParser());
 
 app.get('/login', userController.loginPage);
 app.post('/login', userController.login);
-// app.post('/board', userController.createBoard);
+app.get('/board', userController.getBoards);
 
 app.listen(process.env.PORT || 8000);

@@ -74,7 +74,7 @@ module.exports = {
 		}).then(function(response) {
 			var obj = {boards: []};
 			for (var i = 0; i < response.length; i++) {
-				obj.boards.push(response[0].dataValues.name);
+				obj.boards.push({name: response[0].dataValues.name, bid: response[0].dataValues.id});
 			}
 			var str = JSON.stringify(obj);
 			res.send(str);
