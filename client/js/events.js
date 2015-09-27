@@ -27,18 +27,18 @@
   	city_title.className = "title";
   	city_title.innerHTML = city.name;
 
-  	var city_image = document.getElementById("city-image");
-  	city_image.className="city-image";
-  	city_image.style.backgroundImage = "url('"+city.img+"')";
+  	// var city_image = document.getElementById("city-image");
+  	// city_image.className="city-image";
+  	// city_image.style.backgroundImage = "url('"+city.img+"')";
   	
 
   	var city_title_stick = document.getElementById("title-stick");
   	city_title_stick.className = "title-stick";
-  	city_title_stick.innerHTML = city;
+  	city_title_stick.innerHTML = city.name;
 
-  	var city_image_stick= document.getElementById("city-image-stick");
-  	city_image.className="city-image-stick";
-  	city_image.style.backgroundImage = "url('"+city.img+"')";
+  	// var city_image_stick= document.getElementById("city-image-stick");
+  	// city_image.className="city-image-stick";
+  	// city_image.style.backgroundImage = "url('"+city.img+"')";
 
   	for (var i = 0 ; i<names.length;i++) {
   		var attraction = document.createElement("div");
