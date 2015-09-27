@@ -29,7 +29,7 @@
 		    <!-- FEED PRINCIPAL MEIO -->
 		    <div id="body_main" class="content-main">
           <div class="place-details">
-            <div class="place-image" style="background-image:url('http://photos1.meetupstatic.com/photos/event/3/4/d/c/600_315493532.jpeg')"></div>
+            <div id="place-image"></div>
 
             <div class="place-info">
              <div class="add-place"><i class="fa fa-plus-circle"></i></div>
@@ -103,10 +103,19 @@
 <!-- FIM DO MODAL -->
 
 <script>
+var href = window.location.href;
+  var aid = href.split("aid=")[1];
+  var coordinates = [];
+  $.get("/eventinfo?"+"aid="+aid, function(data) {
+    var jsondata = JSON.parse(data);
+    var eventobject = jsondata.events;
+    coordinates = eventobject.coordinates.split("-");
+  })
+
 var map;
 function initMap() {
 map = new google.maps.Map(document.getElementById('map'), {
-center: {lat: -34.397, lng: 150.644},
+center: {lat: Number(coordinates[0]), lng: Number(coordinates[1])},
 zoom: 8
 });
 }
