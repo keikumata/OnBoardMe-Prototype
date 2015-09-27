@@ -103,7 +103,7 @@ module.exports = {
 				cityId: cid
 			}
 		}).then(function(att) {
-			var obj = {attractions: [], city: ''};
+			var obj = {attractions: [], city: {}};
 			for (var i = 0; i < att.length; i++) {
 				obj.attractions.push({name: att[i].name, img: att[i].img, price: att[i].price, location: att[i].location, aid: att[i].id});
 			}
@@ -112,7 +112,8 @@ module.exports = {
 					id: cid
 				}
 			}).then(function(city) {
-				obj.city = city[0].name;
+				obj.city.name = city[0].name;
+				obj.city.img = city[0].img;
 				var str = JSON.stringify(obj);
 				res.send(str);
 			});

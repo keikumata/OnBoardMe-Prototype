@@ -115,6 +115,13 @@ Attraction.belongsTo(City, {foreignkey: 'city'});
 //   });
 // }
 
+// Attraction.findAll({
+//   where: {
+//     cityId: 1
+//   }
+// }).then(function(att) {
+//   console.log(att);
+// })
 
 
 // City.findAll({}).then(function(city) {
@@ -152,6 +159,15 @@ Attraction.belongsTo(City, {foreignkey: 'city'});
 // });
 
 
+City.findAll({
+        where: {
+          id: 1
+        }
+      }).then(function(city) {
+        console.log(city[0].name);
+        
+        
+      });
 
 // sequelize
 //   .sync({ force: true })
