@@ -39,12 +39,22 @@ var City = sequelize.define('city', {
   img: Sequelize.STRING,
 });
 
+var Attraction = sequelize.define('attraction', {
+  name: Sequelize.STRING,
+  coordinates: Sequelize.STRING,
+  location: Sequelize.STRING,
+  price: Sequelize.STRING,
+  img: Sequelize.STRING,
+});
+
+City.hasMany(Attraction, {foreignkey: 'city'});
+Attraction.belongsTo(City, {foreignkey: 'city'});
+
 module.exports = {
 	loginPage: function(req, res) {
 		res.sendFile(path.resolve(__dirname + '/../client/login.html'));
 	},
 	login: function(req, res) {
-
 		var name = req.body.name;
 		var fbid = req.body.userid;
 		User.findAll({
@@ -84,6 +94,28 @@ module.exports = {
 			}
 			var str = JSON.stringify(obj);
 			res.send(str);
+		})
+	},
+	getAttractions: function(req, res) {
+		var cid = req.query.cid;
+		Attraction.findAll({
+			where: {
+				cityId: cid
+			}
+		}).then(function(att) {
+			var obj = {attractions: [], city: ''};
+			for (var i = 0; i < att.length; i++) {
+				obj.attractions.push({name: att[i].name, img: att[i].img, price: att[i].price, location: att[i].location, aid: att[i].id});
+			}
+			City.findAll({
+				where: {
+					id: cid
+				}
+			}).then(function(city) {
+				obj.city = city.name;
+				var str = JSON.stringify(obj);
+				res.send(str);
+			});
 		})
 	},
 	getBoards: function(req, res) {
