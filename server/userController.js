@@ -50,6 +50,17 @@ var Attraction = sequelize.define('attraction', {
 City.hasMany(Attraction, {foreignkey: 'city'});
 Attraction.belongsTo(City, {foreignkey: 'city'});
 
+var AttractionOption = sequelize.define('attractionoption', {
+  attractionId: Sequelize.INTEGER,
+  boardId: Sequelize.INTEGER,
+});
+
+var Group = sequelize.define('group', {
+  userId: Sequelize.INTEGER,
+  boardId: Sequelize.INTEGER,
+});
+
+
 module.exports = {
 	loginPage: function(req, res) {
 		res.sendFile(path.resolve(__dirname + '/../client/login.html'));
@@ -136,8 +147,30 @@ module.exports = {
 			res.send(str);
 		})
 	},
+	pinToBoard: function(req, res) {
+		var aid = Number(req.query.aid);
+		var bid = Number(req.query.bid);
+		AttractionOption.findAll({
+			where: {
+				attractionId: aid,
+				boardId: bid,
+			}
+		}).then(function(result) {
+			if (result.length) {
+				res.send('Already added');
+			} else {
+				AttractionOption.create({
+					attractionId: aid,
+					boardId: bid,
+				}).then(function(rel) {
+					res.send('Successfully added');
+				});
+			}
+		})
+		
+	},
 	getBoards: function(req, res) {
-		var userId = 2;
+		var userId = 1;
 		// var userId = req.cookie['user-id'];
 		Board.findAll({
 			where: {
@@ -148,18 +181,83 @@ module.exports = {
 			for (var i = 0; i < response.length; i++) {
 				obj.boards.push({name: response[i].dataValues.name, bid: response[i].dataValues.id});
 			}
-			var str = JSON.stringify(obj);
-			res.send(str);
+			Group.findAll({
+			  where: {
+			    userId: userId
+			  }
+			}).then(function(relation) {
+				var queue = relation.length;
+			  for (var i = 0; i < relation.length; i++) {
+			    var bid = relation[i].boardId;
+			    Board.findAll({
+			      where: {
+			        id: bid
+			      }
+			    }).then(function(board) {
+			      obj.boards.push({name: board[0].name, bid: board[0].id});
+			      queue--;
+			      if (queue === 0) {
+			      	var str = JSON.stringify(obj);
+							res.send(str);
+			      }
+			    })
+			  }
+			});
 		})
 	},	
 	getBoardInfo: function(req, res) {
-
+		var bid = Number(req.query.bid);
+		Board.findAll({
+			where: {
+				id: bid
+			}
+		}).then(function(board) {
+			var obj = {events:[], board:{}};
+			obj.board.name = board[0].name;
+			AttractionOption.findAll({
+				where: {
+					boardId: bid
+				}
+			}).then(function(attraction) {
+				if (attraction.length === 0){
+					var str = JSON.stringify(obj);
+					res.send(str);
+				} else {
+					var queue = attraction.length;
+					for (var i = 0; i < attraction.length; i++) {
+						var aid = attraction[i].attractionId;
+						Attraction.findAll({
+							where: {
+								id: aid
+							}
+						}).then(function(e) {
+							for (var j = 0; j < e.length; j++) {
+								obj.events.push({name: e[j].name, img: e[j].img, aid: e[j].id});
+							}	
+							queue--;
+							if (queue === 0) {
+								var str = JSON.stringify(obj);
+								res.send(str);
+							}
+						})
+					}
+				}		
+			})
+		})
 	},
 	createBoard: function(req, res) {
-		var user_id = req.cookies.user_id;
-		Board.create({name: "Summer break", userId: user_id}).then(function(board) {
-			console.log(board);
-			res.send(board);
+		var name = req.body.name;
+		var invited = req.body.invited;
+		Board.create({name: name, userId: 2}).then(function(board) {
+			var bid = board.id;
+			invited.forEach(function(friend_id) {
+				Group.create({
+					userId: friend_id,
+					boardId: bid
+				}).then(function(group) {
+					res.send('group created successfully');
+				})
+			})
 		})
 	},
 	post: function(req, res) {

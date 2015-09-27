@@ -7,7 +7,7 @@ $.get("/board", function(data) {
 		names.push(entry.name);
 		ids.push(entry.bid);
 	});
-	console.log(names);
+	console.log(names, ids);
 	setUpDivs(names,ids);
 })
 

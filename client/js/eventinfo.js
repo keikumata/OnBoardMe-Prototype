@@ -1,5 +1,6 @@
   var href = window.location.href;
   var aid = href.split("aid=")[1];
+  var once = true;
 
   $.get("/eventinfo?"+"aid="+aid, function(data) {
   	var eventobject = JSON.parse(data);
@@ -68,3 +69,38 @@
 
 
 
+
+var plus_button = document.getElementById('plus-button');
+plus_button.onclick = function() {
+	$.get('/board').then(function(boards) {
+		var array = JSON.parse(boards).boards;
+		if (once){
+			array.forEach(function(el) {
+				var select = document.getElementById("select-drop");
+				var option = document.createElement("option");
+				option.text = el.name;
+				option.id = el.bid;
+				select.add(option);
+			})
+			once = false;
+		}
+		document.getElementById('popup_wrapper').style.display = "block";
+	});
+};
+
+var cancel_button = document.getElementById('cancel-button');
+cancel_button.onclick = function() {
+	document.getElementById('popup_wrapper').style.display = "none";
+};
+
+var save_button = document.getElementById('save-button');
+save_button.onclick = function() {
+	// do more 
+	var options = document.getElementById('select-drop').children;
+	var index = document.getElementById('select-drop').selectedIndex;
+	var bid = options[index].id;
+	$.post('/pinboard?bid='+bid+'&aid='+aid).then(function(response) {
+		console.log(response);
+		document.getElementById('popup_wrapper').style.display = "none";
+	});
+};

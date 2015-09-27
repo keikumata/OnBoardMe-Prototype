@@ -30,25 +30,74 @@ var Board = sequelize.define('board', {
   name: Sequelize.STRING,
 });
 
-User.hasMany(Board,{foreignkey: 'creator'});
-Board.belongsTo(User, {foreignkey: 'creator'})
+// User.hasMany(Board,{foreignkey: 'creator'});
+// Board.belongsTo(User, {foreignkey: 'creator'})
 
-var City = sequelize.define('city', {
-  name: Sequelize.STRING,
-  img: Sequelize.STRING,
-});
+// var City = sequelize.define('city', {
+//   name: Sequelize.STRING,
+//   img: Sequelize.STRING,
+// });
 
-var Attraction = sequelize.define('attraction', {
-  name: Sequelize.STRING,
-  coordinates: Sequelize.STRING,
-  location: Sequelize.STRING,
-  price: Sequelize.STRING,
-  img: Sequelize.STRING,
-});
+// var Attraction = sequelize.define('attraction', {
+//   name: Sequelize.STRING,
+//   coordinates: Sequelize.STRING,
+//   location: Sequelize.STRING,
+//   price: Sequelize.STRING,
+//   img: Sequelize.STRING,
+// });
 
-City.hasMany(Attraction, {foreignkey: 'city'});
-Attraction.belongsTo(City, {foreignkey: 'city'});
+// var AttractionOption = sequelize.define('attractionoption', {
+//   attractionId: Sequelize.INTEGER,
+//   boardId: Sequelize.INTEGER,
+// });
 
+// var Group = sequelize.define('group', {
+//   userId: Sequelize.INTEGER,
+//   boardId: Sequelize.INTEGER,
+// });
+
+// Group.findAll({
+//   where: {
+//     userId: 1
+//   }
+// }).then(function(relation) {
+//   for (var i = 0; i < relation.length; i++) {
+//     var bid = relation[i].boardId;
+//     Board.findAll({
+//       where: {
+//         id: bid
+//       }
+//     }).then(function(board) {
+//       console.log(board[0].name);
+//     })
+
+//   }
+// })
+
+
+// User.destroy({
+//   where: {
+//     id: 6
+//   }
+// }).then(function(user) {
+//   console.log(user);
+// })
+
+
+// var name = 'Fall Break';
+//     var invited = [1,2];
+//     Board.create({name: name, userId: 2}).then(function(board) {
+//       var bid = board.id;
+//       console.log(bid);
+//       // invited.forEach(function(friend_id) {
+//       //   Group.create({
+//       //     userId: friend_id,
+//       //     boardId: bid
+//       //   }).then(function(group) {
+//       //     res.send('group created successfully');
+//       //   })
+//       // })
+//     })
 // var array = [
 // {name: 'London', img: 'http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg'}, 
 // {name: 'Paris', img: 'http://www.france.com/wp-content/uploads/2014/01/header.jpg'}, 

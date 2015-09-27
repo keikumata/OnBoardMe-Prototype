@@ -13,6 +13,24 @@ $.get("/city", function(data) {
 	setUpDivs(names,ids,imageurls);
 })
 
+
+$('#search').keyup(function() {
+	var $feed = $('.feed');
+	var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+	reg = RegExp(val, 'i'),
+	text;
+	
+	$feed.show().filter(function() {
+		text = $(this).text().replace(/\s+/g, ' ');
+		return !reg.test(text);
+	}).hide();
+});
+// $(function(){
+// 	$('#search').keyup(function() {
+// 		$("#dynamic").find("." + this.id).toggle();   
+// 	});
+// });
+
 function setUpDivs(names, ids, imageurls) {
 	for (var i=0; i<names.length; i++) {
 		var title = document.createElement("div");
@@ -42,5 +60,6 @@ function setUpDivs(names, ids, imageurls) {
 		feed.appendChild(clear);
 		a.appendChild(feed);
 		dynamic.appendChild(a);
+		dynamic.id = names[i];
 	}
 }

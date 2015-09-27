@@ -17,6 +17,7 @@
   <div id="doc" class="">
 
     <div id="page-outer">
+
      <div class="top-page">
       <div class="top-page-wrapper">
        <h1 class="top-page-title">
@@ -32,7 +33,7 @@
         <div id="place-image"></div>
 
         <div class="place-info">
-         <div class="add-place"><i class="fa fa-plus-circle"></i></div>
+         <div class="add-place"><i class="fa fa-plus-circle" id="plus-button"></i></div>
 
          <div class="place-title">
           <div id = "title"></div>
@@ -79,7 +80,7 @@
 
 <!-- MODAL -->
 
-<div class="popup_wrapper" style="display:none;"> 
+<div class="popup_wrapper" style="display:none;" id="popup_wrapper"> 
   <!-- display:block to show  -->
   <div class="popup">
 
@@ -88,18 +89,18 @@
     </div>
 
     <div class="popup-save-select">
-      <select>
+      <select id='select-drop'>
       </select>
     </div>
 
     <div class="popup-save-button">
-      <a class="save-button">
+      <button class="save-button" id="save-button">
         Save
-      </a>
+      </button>
 
-      <a class="cancel-button">
+      <button class="cancel-button" id='cancel-button'>
         Cancel
-      </a>
+      </button>
 
       <div class="clear"></div>
     </div>
