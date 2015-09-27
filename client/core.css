@@ -262,6 +262,7 @@ display: block;
 margin: 0 auto;
 position: relative;
 bottom: -10px;
+z-index:3;
 }
 
 /* FEEDS */
