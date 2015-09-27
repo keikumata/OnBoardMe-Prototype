@@ -1,6 +1,5 @@
   var href = window.location.href;
   var cid = href.split("cid=")[1];
-  console.log(cid);
 
   $.get("/attraction?"+"cid="+cid, function(data) {
   	var jsondata = JSON.parse(data);
@@ -93,5 +92,17 @@
   		a.appendChild(attraction);
   		dynamic_event.appendChild(a);
   	}
-  	
+  	var dropdown = document.getElementById("events-filter-drop-down");
+  	var filter = document.getElementById("events-filter");
+  	filter.setAttribute('contentdown', 'false');
+  	filter.onclick = function() {
+  		if (filter.getAttribute('contentdown')=='false') {
+  			$('#events-filter-drop-down').stop().slideDown(500);
+  			filter.setAttribute('contentdown','true');
+  		} else {
+  			$('#events-filter-drop-down').stop().slideUp(500);
+  			filter.setAttribute('contentdown','false');
+  		}
+  	};
+
   }

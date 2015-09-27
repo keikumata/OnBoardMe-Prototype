@@ -26,11 +26,14 @@ var Vote = sequelize.define('vote', {
   boardId: Sequelize.INTEGER,
 });
 
-// Vote.findAll({
 
-// }).then(function(vote) {
-//   console.log(vote);
-// });
+
+Vote.findAll({
+
+}).then(function(vote) {
+  console.log(vote);
+});
+
 // Vote.findAll({
 //       where: {
 //         boardId : 20

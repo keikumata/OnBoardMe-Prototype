@@ -72,9 +72,13 @@ function setUpDivs(names,aids,imageurls,boardname, votes) {
 			var aid = split[0];
 			var bid = split[1];
 			var body = {aid: aid, bid: bid};
-			this.className = 'vote-board-menu-activated';
+			// this.className = 'vote-board-menu-activated';
 			$.post('/vote', body).then(function(response) {
 				// change color to green
+				if (response=="Already voted") {
+					alert("Already Voted!");
+					return;
+				}
 				this.className = 'vote-board-menu-activated';
 				var num = Number(this.innerHTML.split(' ')[0]);
 				num++;

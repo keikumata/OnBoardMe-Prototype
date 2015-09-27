@@ -123,68 +123,6 @@ textarea{
 	left: 0;
 }
 
-
-/* INDEX */
-
-.index-background{
-	display: block;
-	background-size: cover;
-	background-position: center;
-	height:100%;
-	width:auto;
-}
-
-.index-title{
-display: block;
-width:100%;
-text-align: center;
-padding: 140px 0px 100px 0px;
-font-size: 50px;
-color:#fff;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-}
-
-.index-login-menu{
-display: block;
-width:100%;
-text-align: center;
-padding: 160px 0px !important;
-}
-
-
-.facebook-login{
-	display: block;
-	text-align: center;
-	box-shadow: 0 0 0 1px #15427c;
-	border-radius: 3px;
-	margin: 15px auto;
-	padding: 12px 8px;
-	width: 75%;
-	border-bottom: 2px solid rgba(0,0,0,0.2);
-	background-color: #3B5998;
-	color: #fff;
-	font-size: 15px;
-	line-height: 18px;
-
-}
-
-.email-login{
-	display: block;
-	text-align: center;
-	box-shadow: 0 0 0 1px #FF9500;
-	border-radius: 3px;
-	margin: 10px auto;
-	padding: 12px 8px;
-	width: 75%;
-	border-bottom: 2px solid rgba(0,0,0,0.2);
-	background-color: #FF5E3A;
-	color: #fff;
-	font-size: 15px;
-	line-height: 18px;
-
-}
-
-
 /* PAGE TOP */
 
 .top-page{
@@ -213,6 +151,14 @@ padding: 160px 0px !important;
 	text-align:center;
 }
 
+.top-page-image{
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	height: auto;
+	width:200px;
+	margin-top:15px;
+}
 
 .top-page-search{
 	width: 100%;
@@ -567,6 +513,7 @@ padding: 160px 0px !important;
 	display: inline-block;
 	float: left;
 	text-align:center;
+
 	color:#fff;
 }
 
@@ -1119,4 +1066,70 @@ label:hover:before {
 	text-align: center;
 	font-size: 30px;
 	padding-top:50px;
+}
+
+/* FILTER DROP DOWN */
+
+.drop-down-category{
+display: block;
+text-align: center;
+font-weight: bold;
+font-size: 16px;
+padding: 10px;
+}
+
+
+.events-filter-drop-down-wrapper{
+/*display: block;*/
+/*width: 100%;*/
+background-color: #eff3fa;
+}
+
+.events-filter-drop-down{
+padding: 15px;
+}
+
+.drop-down-item-title{
+display: block;
+}
+
+.drop-down-item{
+background-color: #fff;
+display: block;
+padding: 15px;
+border-bottom: 1px solid #eee;
+font-size: 14px;
+}
+
+.drop-down-item .fa{margin-right: 7px; font-size:16px; }
+
+.drop-down-item:hover{
+	opacity: 0.9;
+}
+
+.events-filter-drop-down-menu{
+display: block;
+padding: 10px;
+}
+
+.drop-down-price-menu{
+display: block;
+margin: 10px auto;
+}
+
+
+.drop-down-item-price{
+display: inline-block;
+float: left;
+text-align: center;
+width: 25%;
+background: #fff;
+border: 1px solid #eee;
+padding: 10px;
+}
+.horizontal-scroll{
+    width: 100%;
+    overflow-x:auto;
+    position:fixed;
+    height: 80%;
 }
