@@ -65,6 +65,16 @@ module.exports = {
 			}
 		});
 	},
+	getFriends: function(req, res) {
+		User.findAll({}).then(function(user) {
+			var obj = {friends: []};
+			for (var i = 0; i < user.length; i++) {
+				obj.friends.push({name: user[i].name, img: user[i].img, uid: user[i].id});
+			}
+			var str = JSON.stringify(obj);
+			res.send(str);
+		})
+	},
 	getCities: function(req, res) {
 		City.findAll({}).then(function(city) {
 			var obj = {cities: []};

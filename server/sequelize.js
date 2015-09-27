@@ -20,22 +20,32 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
-// var User = sequelize.define('user', {
-//   name: Sequelize.STRING,
-//   fbid: Sequelize.STRING,
-// });
-
-// var Board = sequelize.define('board', {
-//   name: Sequelize.STRING,
-// });
-
-// User.hasMany(Board,{foreignkey: 'creator'});
-// Board.belongsTo(User, {foreignkey: 'creator'})
-
-var City = sequelize.define('city', {
+var User = sequelize.define('user', {
   name: Sequelize.STRING,
-  img: Sequelize.STRING,
+  fbid: Sequelize.STRING,
 });
+
+var Board = sequelize.define('board', {
+  name: Sequelize.STRING,
+});
+
+User.hasMany(Board,{foreignkey: 'creator'});
+Board.belongsTo(User, {foreignkey: 'creator'})
+
+// var City = sequelize.define('city', {
+//   name: Sequelize.STRING,
+//   img: Sequelize.STRING,
+// });
+
+// var Event = sequelize.define('event', {
+//   name: Sequelize.STRING,
+//   coordinates: Sequelize.STRING,
+//   location: Sequelize.STRING,
+//   price: Sequelize.STRING,
+// });
+
+// City.hasMany(Event, {foreignkey: 'city'});
+// Event.belongsTo(City, {foreignkey: 'city'});
 
 // var array = [
 // {name: 'London', img: 'http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg'}, 
@@ -52,12 +62,70 @@ var City = sequelize.define('city', {
 //     console.log(country, 'country');
 //   })
 // }
+// 
+var array = [
+{},
+{},
+{},
+{},
+{},
+{},
+{},
+{},
+{},
+{},
+{},
+{},
+{},
+{},
+{},
+];
 
-City.findAll({}).then(function(city) {
-  console.log(city);
-})
+// var users = [
+// {name: "Kei Yoshikoshi", img: "https://media.licdn.com/media/AAEAAQAAAAAAAAKxAAAAJGUwMTA5ZjcxLTNlNjAtNDc2NC04ODVmLTBlODNiMGI0MzcyNQ.jpg"},
+// {name: "Jae Hun Ro", img: "https://scontent.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/427697_385784991433450_85817638_n.jpg?oh=63d50b811195a450d670eefb2c58b4e2&oe=569FAD31"},
+// {name: "Marcos Arata", img: "https://scontent.xx.fbcdn.net/hphotos-xal1/v/t1.0-9/405140_407134742652633_1463058000_n.jpg?oh=41ff4ac7e82477271b45e8eafc2f109c&oe=56A9E699"},
+// {name: "Maria Kucheryavaya", img: "https://scontent.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/10653716_953956827951199_4875711962003210075_n.jpg?oh=aa6b29122db3aac1e57092e2ec991ea1&oe=569929C3"},
+// {name: "Richie Dawes", img: "https://scontent.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/10563109_10152402317942968_8277816983192594913_n.jpg?oh=4f9ba729406e25027e0dbfddb2cbf63c&oe=56A4067C"},
+// ];
+
+// for (var i = 0; i < users.length; i++) {
+//   User.create({
+//     name: users[i].name,
+//     img: users[i].img
+//   });
+// }
+
+// var boards = [
+// {name: "Spring Break", userId: 1},
+// {name: "Graduation", userId: 1},
+// {name: "American Bars", userId: 1},
+// {name: "London Pubs", userId: 1},
+// {name: "Birthday", userId: 1},
+// ];
+
+// for (var i = 0; i < boards.length; i++) {
+//   Board.create({
+//     name: boards[i].name,
+//     userId: boards[i].userId
+//   });
+// }
+
+
+
+// City.findAll({}).then(function(city) {
+//   console.log(city);
+// })
 
 // Board.findAll({
+// }).then(function(user) {
+//   for (var i =0; i < user.length; i++) {
+//     console.log(user[i].dataValues.name);
+//   }
+// });
+
+
+// User.findAll({
 // }).then(function(user) {
 //   for (var i =0; i < user.length; i++) {
 //     console.log(user[i].dataValues.name);

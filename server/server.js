@@ -25,4 +25,6 @@ app.get('/city', userController.getCities);
 app.get('/board', userController.getBoards);
 app.get('/boardinfo', userController.getBoardInfo);
 
+app.get('/friend', userController.getFriends);
+
 app.listen(process.env.PORT || 8000);
