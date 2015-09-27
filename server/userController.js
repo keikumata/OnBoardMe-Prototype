@@ -219,25 +219,29 @@ module.exports = {
 					boardId: bid
 				}
 			}).then(function(attraction) {
-				if (!attraction.length){
+				if (attraction.length === 0){
 					var str = JSON.stringify(obj);
 					res.send(str);
-				}
-				for (var i = 0; i < attraction.length; i++) {
-					var aid = attraction[i].attractionId;
-					Attraction.findAll({
-						where: {
-							id: aid
-						}
-					}).then(function(e) {
-						for (var j = 0; j < e.length; j++) {
-							obj.events.push({name: e[j].name, img: e[j].img, aid: e[j].id});
-						}	
-						var str = JSON.stringify(obj);
-						console.log(str, 'hello');
-						res.send(str);
-					})
-				}
+				} else {
+					var queue = attraction.length;
+					for (var i = 0; i < attraction.length; i++) {
+						var aid = attraction[i].attractionId;
+						Attraction.findAll({
+							where: {
+								id: aid
+							}
+						}).then(function(e) {
+							for (var j = 0; j < e.length; j++) {
+								obj.events.push({name: e[j].name, img: e[j].img, aid: e[j].id});
+							}	
+							queue--;
+							if (queue === 0) {
+								var str = JSON.stringify(obj);
+								res.send(str);
+							}
+						})
+					}
+				}		
 			})
 		})
 	},
