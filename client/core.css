@@ -1105,3 +1105,64 @@ label:hover:before {
 	font-size: 34px;
 	padding-top:50px;
 }
+
+
+/* FILTER DROP DOWN */
+
+.drop-down-category{
+display: block;
+text-align: center;
+font-weight: bold;
+font-size: 16px;
+padding: 10px;
+}
+
+
+.events-filter-drop-down-wrapper{
+display: block;
+width: 100%;
+background-color: #eff3fa;
+}
+
+.events-filter-drop-down{
+padding: 15px;
+}
+
+.drop-down-item-title{
+display: block;
+}
+
+.drop-down-item{
+background-color: #fff;
+display: block;
+padding: 15px;
+border-bottom: 1px solid #eee;
+font-size: 14px;
+}
+
+.drop-down-item .fa{margin-right: 7px; font-size:16px; }
+
+.drop-down-item:hover{
+	opacity: 0.9;
+}
+
+.events-filter-drop-down-menu{
+display: block;
+padding: 10px;
+}
+
+.drop-down-price-menu{
+display: block;
+margin: 10px auto;
+}
+
+
+.drop-down-item-price{
+display: inline-block;
+float: left;
+text-align: center;
+width: 25%;
+background: #fff;
+border: 1px solid #eee;
+padding: 10px;
+}
