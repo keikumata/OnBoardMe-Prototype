@@ -119,8 +119,25 @@ module.exports = {
 			});
 		})
 	},
+	getEventInfo: function(req, res) {
+		var aid = Number(req.query.aid);
+		Attraction.findAll({
+			where: {
+				id: aid
+			}
+		}).then(function(e) {
+			var obj = {};
+			obj.name = e[0].name;
+			obj.location = e[0].location;
+			obj.coordinate = e[0].coordinates;
+			obj.price = e[0].price;
+			obj.img = e[0].img;
+			var str = JSON.stringify(obj);
+			res.send(str);
+		})
+	},
 	getBoards: function(req, res) {
-		var userId = 1;
+		var userId = 2;
 		// var userId = req.cookie['user-id'];
 		Board.findAll({
 			where: {

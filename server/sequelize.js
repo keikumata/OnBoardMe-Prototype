@@ -20,18 +20,18 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
-// var User = sequelize.define('user', {
-//   name: Sequelize.STRING,
-//   fbid: Sequelize.STRING,
-//   img: Sequelize.STRING,
-// });
+var User = sequelize.define('user', {
+  name: Sequelize.STRING,
+  fbid: Sequelize.STRING,
+  img: Sequelize.STRING,
+});
 
-// var Board = sequelize.define('board', {
-//   name: Sequelize.STRING,
-// });
+var Board = sequelize.define('board', {
+  name: Sequelize.STRING,
+});
 
-// User.hasMany(Board,{foreignkey: 'creator'});
-// Board.belongsTo(User, {foreignkey: 'creator'})
+User.hasMany(Board,{foreignkey: 'creator'});
+Board.belongsTo(User, {foreignkey: 'creator'})
 
 var City = sequelize.define('city', {
   name: Sequelize.STRING,
@@ -115,6 +115,20 @@ Attraction.belongsTo(City, {foreignkey: 'city'});
 //   });
 // }
 
+// var boards = [
+// {name: "Winter Break", userId: 2},
+// {name: "World Cup", userId: 2},
+// {name: "Backpack", userId: 2},
+// {name: "Bday", userId: 2},
+// ];
+
+// for (var i = 0; i < boards.length; i++) {
+//   Board.create({
+//     name: boards[i].name,
+//     userId: boards[i].userId
+//   });
+// }
+
 // Attraction.findAll({
 //   where: {
 //     cityId: 1
@@ -159,15 +173,31 @@ Attraction.belongsTo(City, {foreignkey: 'city'});
 // });
 
 
-City.findAll({
-        where: {
-          id: 1
-        }
-      }).then(function(city) {
-        console.log(city[0].name);
+// City.findAll({
+//         where: {
+//           id: 1
+//         }
+//       }).then(function(city) {
+//         console.log(city[0].name);
         
         
-      });
+//       });
+//       
+//       
+
+// Attraction.findAll({
+//       where: {
+//         id: 1
+//       }
+//     }).then(function(e) {
+//       var obj = {};
+//       obj.name = e[0].name;
+//       obj.location = e[0].location;
+//       obj.coordinate = e[0].coordinates;
+//       obj.price = e[0].price;
+//       obj.img = e[0].img;
+//       console.log(obj);
+//     })
 
 // sequelize
 //   .sync({ force: true })
