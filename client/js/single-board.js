@@ -77,7 +77,7 @@ function setUpDivs(names,aids,imageurls,boardname, votes) {
 				// change color to green
 				if (response=="Already voted") {
 					alert("Already Voted!");
-					break;
+					return;
 				}
 				this.className = 'vote-board-menu-activated';
 				var num = Number(this.innerHTML.split(' ')[0]);
