@@ -1,4 +1,3 @@
-
 var href = window.location.href;
 var bid = href.split("bid=")[1];
 $.get("/boardinfo?"+"bid="+bid, function(data) {

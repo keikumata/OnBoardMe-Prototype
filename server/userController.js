@@ -194,7 +194,7 @@ module.exports = {
 			        id: bid
 			      }
 			    }).then(function(board) {
-			      obj.boards.push({name: board[0].name, bid: bid});
+			      obj.boards.push({name: board[0].name, bid: board[0].id});
 			      queue--;
 			      if (queue === 0) {
 			      	var str = JSON.stringify(obj);
@@ -219,20 +219,29 @@ module.exports = {
 					boardId: bid
 				}
 			}).then(function(attraction) {
-				for (var i = 0; i < attraction.length; i++) {
-					var aid = attraction[i].attractionId;
-					Attraction.findAll({
-						where: {
-							id: aid
-						}
-					}).then(function(e) {
-						for (var j = 0; j < e.length; j++) {
-							obj.events.push({name: e[j].name, img: e[j].img, aid: e[j].id});
-						}	
-						var str = JSON.stringify(obj);
-						res.send(str);
-					})
-				}
+				if (attraction.length === 0){
+					var str = JSON.stringify(obj);
+					res.send(str);
+				} else {
+					var queue = attraction.length;
+					for (var i = 0; i < attraction.length; i++) {
+						var aid = attraction[i].attractionId;
+						Attraction.findAll({
+							where: {
+								id: aid
+							}
+						}).then(function(e) {
+							for (var j = 0; j < e.length; j++) {
+								obj.events.push({name: e[j].name, img: e[j].img, aid: e[j].id});
+							}	
+							queue--;
+							if (queue === 0) {
+								var str = JSON.stringify(obj);
+								res.send(str);
+							}
+						})
+					}
+				}		
 			})
 		})
 	},
