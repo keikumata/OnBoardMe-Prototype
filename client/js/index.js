@@ -14,13 +14,14 @@ $.get("/city", function(data) {
 })
 
 function setUpDivs(names, ids, imageurls) {
-	// var names = ["London", "Paris", "Tokyo"];
 	for (var i=0; i<names.length; i++) {
 		var title = document.createElement("div");
 		title.className = "title";
 		title.innerHTML = names[i];
-		// var a = document.createElement("a");
-		// a.href = "single-board.html?"+"bid=" + ids[i];
+
+		var a = document.createElement("a");
+		a.href = "eventinfo.html?"+"cid=" + ids[i];
+
 		var feed_title = document.createElement("div");
 		feed_title.className = "feed-title";
 
@@ -39,7 +40,7 @@ function setUpDivs(names, ids, imageurls) {
 		feed.appendChild(feed_image);
 		feed_image.appendChild(feed_title);
 		feed.appendChild(clear);
-
-		dynamic.appendChild(feed);
+		a.appendChild(feed);
+		dynamic.appendChild(a);
 	}
 }

@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="core.css">
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-<title>OnboardMe</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<title>OnBoardMe</title>
 
 </head>
 
@@ -20,7 +20,7 @@
 			<div class="top-page">
 				<div class="top-page-wrapper">
 	        <h1 class="top-page-title">
-            <i class="fa fa-compass fa-2x"></i> OnboardMe!
+            <i class="fa fa-compass fa-2x"></i> OnBoardMe!
           </h1>
 				</div>
 			</div>
@@ -35,13 +35,10 @@
              <div class="add-place"><i class="fa fa-plus-circle"></i></div>
 
               <div class="place-title">
-                <div class="title">Pub Crawl</div>
+                <div id = "title"></div>
               </div>
 
-              <div class="place-stats">
-                <i class="fa fa-map-marker"></i> Camden
-                <i class="fa fa-money"></i> £ 50
-              </div>
+              <div id="event-title"></div>
 
               <div class="place-description">
                 <p>The Camden Pub Crawl, the original alternative London pub crawl, takes you off the tourist trail to the best bars, clubs and live music venues in London</p>
@@ -75,7 +72,8 @@
 
 <!-- MODAL -->
 
-<div class="popup_wrapper" style="display:block;">
+<div class="popup_wrapper" style="display:none;"> 
+  <!-- display:block to show  -->
 	<div class="popup">
 
     <div class="popup-save-title">
@@ -116,6 +114,6 @@ zoom: 8
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDowOdSjsY46_xhL7yXCRVQ4PvSB8isjyk&callback=initMap"
     async defer></script>
-
+    <script src="js/eventinfo.js"></script>
 </body>
 </html>
