@@ -31,24 +31,24 @@ var Vote = sequelize.define('vote', {
 // }).then(function(vote) {
 //   console.log(vote);
 // });
-Vote.findAll({
-      where: {
-        boardId : 20
-      }
-    }).then(function(votes){
-      var map = {};
-      for (var j=0; j<votes.length;j++) {
-        var temp = "" + votes[j].attractionId;
-        if (map[temp]) {
-          map[temp]++;
-        }
-        else {
-          map[temp] = 1;
-        }
-      }
-      var result = JSON.stringify(map);
-      console.log(map);
-    });
+// Vote.findAll({
+//       where: {
+//         boardId : 20
+//       }
+//     }).then(function(votes){
+//       var map = {};
+//       for (var j=0; j<votes.length;j++) {
+//         var temp = "" + votes[j].attractionId;
+//         if (map[temp]) {
+//           map[temp]++;
+//         }
+//         else {
+//           map[temp] = 1;
+//         }
+//       }
+//       var result = JSON.stringify(map);
+//       console.log(map);
+//     });
 
 // var votes = [{uid: 0, attractionId: 5, boardId: 1},{uid: 2, attractionId: 3, boardId: 4},{uid: 1, attractionId: 2, boardId: 3},{uid: 2, attractionId: 1, boardId: 6}];
 // for (var i=0; i<votes.length;i++) {
@@ -60,41 +60,44 @@ Vote.findAll({
 //     console.log(vote);
 //   });
 // }
-// var User = sequelize.define('user', {
-//   name: Sequelize.STRING,
-//   fbid: Sequelize.STRING,
-//   img: Sequelize.STRING,
-// });
+var User = sequelize.define('user', {
+  name: Sequelize.STRING,
+  fbid: Sequelize.STRING,
+  img: Sequelize.STRING,
+});
 
-// var Board = sequelize.define('board', {
-//   name: Sequelize.STRING,
-// });
+var Board = sequelize.define('board', {
+  name: Sequelize.STRING,
+});
 
-// User.hasMany(Board,{foreignkey: 'creator'});
-// Board.belongsTo(User, {foreignkey: 'creator'})
+User.hasMany(Board,{foreignkey: 'creator'});
+Board.belongsTo(User, {foreignkey: 'creator'})
 
-// var City = sequelize.define('city', {
-//   name: Sequelize.STRING,
-//   img: Sequelize.STRING,
-// });
+var City = sequelize.define('city', {
+  name: Sequelize.STRING,
+  img: Sequelize.STRING,
+});
 
-// var Attraction = sequelize.define('attraction', {
-//   name: Sequelize.STRING,
-//   coordinates: Sequelize.STRING,
-//   location: Sequelize.STRING,
-//   price: Sequelize.STRING,
-//   img: Sequelize.STRING,
-// });
+var Attraction = sequelize.define('attraction', {
+  name: Sequelize.STRING,
+  coordinates: Sequelize.STRING,
+  location: Sequelize.STRING,
+  price: Sequelize.STRING,
+  img: Sequelize.STRING,
+});
 
-// var AttractionOption = sequelize.define('attractionoption', {
-//   attractionId: Sequelize.INTEGER,
-//   boardId: Sequelize.INTEGER,
-// });
+City.hasMany(Attraction, {foreignkey: 'city'});
+Attraction.belongsTo(City, {foreignkey: 'city'});
 
-// var Group = sequelize.define('group', {
-//   userId: Sequelize.INTEGER,
-//   boardId: Sequelize.INTEGER,
-// });
+var AttractionOption = sequelize.define('attractionoption', {
+  attractionId: Sequelize.INTEGER,
+  boardId: Sequelize.INTEGER,
+});
+
+var Group = sequelize.define('group', {
+  userId: Sequelize.INTEGER,
+  boardId: Sequelize.INTEGER,
+});
 
 // Group.findAll({
 //   where: {
@@ -241,6 +244,7 @@ Vote.findAll({
 
 // User.findAll({
 // }).then(function(user) {
+//   console.log(user.length)
 //   for (var i =0; i < user.length; i++) {
 //     console.log(user[i].img);
 //   }
