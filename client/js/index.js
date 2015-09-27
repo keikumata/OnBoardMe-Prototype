@@ -16,17 +16,17 @@ $.get("/city", function(data) {
 
 $('#search').keyup(function() {
 	var $rows = $('.title');
-	// var $dynamic = $('#dynamic')
+	var $dynamic = $('#dynamic');
 	var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
 	reg = RegExp(val, 'i'),
 	text;
 	
-
 	$rows.show().filter(function() {
 		text = $(this).text().replace(/\s+/g, ' ');
-		console.log(text);
 		return !reg.test(text);
-	}).hide();
+	}).hide(function() {
+		console.log("hiding");
+	});
 });
 // $(function(){
 // 	$('#search').keyup(function() {
@@ -38,7 +38,6 @@ function setUpDivs(names, ids, imageurls) {
 	for (var i=0; i<names.length; i++) {
 		var title = document.createElement("div");
 		title.className = "title";
-		// title["data-filter"] = names[i];
 		title.innerHTML = names[i];
 
 		var a = document.createElement("a");
