@@ -27,3 +27,20 @@ place_stats.appendChild(price);
 
 event_title.appendChild(place_stats);
 
+
+var plus_button = document.getElementById('place-plus');
+plus_button.onclick = function() {
+	document.getElementById('popup_wrapper').style.display = "block";
+};
+
+var cancel_button = document.getElementById('cancel-button');
+cancel_button.onclick = function() {
+	document.getElementById('popup_wrapper').style.display = "none";
+};
+
+var save_button = document.getElementById('save-button');
+save_button.onclick = function() {
+	document.getElementById('popup_wrapper').style.display = "none";
+	// do more 
+
+};

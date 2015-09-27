@@ -32,7 +32,7 @@
             <div class="place-image" style="background-image:url('http://photos1.meetupstatic.com/photos/event/3/4/d/c/600_315493532.jpeg')"></div>
 
             <div class="place-info">
-             <div class="add-place"><i class="fa fa-plus-circle"></i></div>
+             <div class="add-place" id="place-plus"><i class="fa fa-plus-circle"></i></div>
 
               <div class="place-title">
                 <div id = "title"></div>
@@ -79,7 +79,7 @@
 
 <!-- MODAL -->
 
-<div class="popup_wrapper" style="display:none;"> 
+<div class="popup_wrapper" style="display:none;" id="popup_wrapper"> 
   <!-- display:block to show  -->
 	<div class="popup">
 
@@ -93,13 +93,13 @@
     </div>
 
     <div class="popup-save-button">
-      <a class="save-button">
+      <button class="save-button" id="save-button">
         Save
-      </a>
+      </button>
 
-      <a class="cancel-button">
+      <button class="cancel-button" id='cancel-button'>
         Cancel
-      </a>
+      </button>
 
       <div class="clear"></div>
   </div>

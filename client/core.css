@@ -454,6 +454,7 @@ background-color: #fff;
 color: #4285f4;
 text-align: center;
 margin-right: 12px;
+cursor: pointer;
 }
 
 .cancel-button{
@@ -466,6 +467,7 @@ border: 1px solid #82888a;
 background-color: #fff;
 color: #82888a;
 text-align: center;
+cursor: pointer;
 }
 
 /* SINGLE BOARD */
@@ -588,6 +590,10 @@ margin: 5px auto;
 .friends-list-sharer .fa{
 	font-size: 40px;
 	margin:10px;
+}
+
+.fa-plus-circle{
+	cursor: pointer;
 }
 
 .fa-facebook-official{color:#3b5998;}
