@@ -64,6 +64,22 @@ module.exports = {
 			}
 		});
 	},
+	getBoards: function(req, res) {
+		var userId = 1;
+		// var userId = req.cookie['user-id'];
+		Board.findAll({
+			where: {
+				userId: userId
+			}
+		}).then(function(response) {
+			var obj = {boards: []};
+			for (var i = 0; i < response.length; i++) {
+				obj.boards.push(response[0].dataValues.name);
+			}
+			var str = JSON.stringify(obj);
+			res.send(str);
+		})
+	},	
 	createBoard: function(req, res) {
 		var user_id = req.cookies.user_id;
 		Board.create({name: "Summer break", userId: user_id}).then(function(board) {
