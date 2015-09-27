@@ -89,7 +89,7 @@
       'Thanks for logging in, ' + response.name + '!';
       var object = {userid:userID, name:response.name};
       $.post('/login', object).then(function(data) {
-        console.log(data);
+        localStorage.setItem('user-id', data);
       });
     }); 
     FB.api('/me/friends', function(response) {
