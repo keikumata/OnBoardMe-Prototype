@@ -1,5 +1,5 @@
-var parameters = location.search.substring(1).split("&");
-var bid = parameters[0];
+var parameters = location.search.substring(1).split("bid=");
+var bid = parameters[1];
 $.get("/boardinfo?"+"bid="+bid, function(data) {
 	
 });
