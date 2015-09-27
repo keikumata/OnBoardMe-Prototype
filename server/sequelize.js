@@ -129,7 +129,7 @@ var events = [
 User.findAll({
 }).then(function(user) {
   for (var i =0; i < user.length; i++) {
-    console.log(user[i].dataValues.img);
+    console.log(user[i].img);
   }
 });
 // var Friend = sequelize.define('friend', {
