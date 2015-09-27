@@ -21,7 +21,7 @@
       var userID = response.authResponse.userID;
       testAPI(userID);
       
-      // window.location="boards.html";
+      window.location="boards.html";
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -90,7 +90,7 @@
 
       var object = {userid:userID, name:response.name};
       $.post("/login",object).then(function(response) {
-  
+      
       });
     });
     FB.api('/me/friends', function(response) {
