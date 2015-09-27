@@ -33,6 +33,9 @@ app.get('/boardinfo', userController.getBoardInfo);
 
 app.post('/create', userController.createBoard);
 
+app.get('/vote', userController.getVotes);
+app.post('/vote',userController.createVotes);
+
 app.get('/friend', userController.getFriends);
 
 app.listen(process.env.PORT || 8000);

@@ -12,7 +12,10 @@ $.get("/boardinfo?"+"bid="+bid, function(data) {
 		aids.push(entry.aid);
 		imageurls.push(entry.img);
 	});
-	setUpDivs(names,aids,imageurls,boardname);
+	$.get("/vote?bid="+bid).then(function(response) {
+		var votes = JSON.parse(response);
+		setUpDivs(names,aids,imageurls,boardname, votes);
+	})
 });
 
 function setUpDivs(names,aids,imageurls,boardname) {
@@ -32,7 +35,8 @@ function setUpDivs(names,aids,imageurls,boardname) {
 		var menu = document.createElement("div");
 		menu.className = 'vote-board-menu';
 		menu.id = ''+aids[i]+'-'+bid;
-		menu.innerHTML = 'Vote';
+		var s = aids[i] + '';
+		menu.innerHTML = votes[s] + ' Votes';
 
 		single_board_voting.appendChild(menu);
 
@@ -67,10 +71,13 @@ function setUpDivs(names,aids,imageurls,boardname) {
 			var aid = split[0];
 			var bid = split[1];
 			var body = {aid: aid, bid: bid};
-			$.post('/vote', body).then(function(response) {
-				// change color to green
-				console.log(response);
-			});
+							this.className = 'vote-board-menu-activated';
+
+			// $.post('/vote', body).then(function(response) {
+			// 	// change color to green
+			// 	console.log(response);
+			// 	this.className = 'vote-board-menu-activated';
+			// });
 		};
 
 		dynamic.appendChild(single_board);

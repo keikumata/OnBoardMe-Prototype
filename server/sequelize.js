@@ -20,15 +20,32 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
-var User = sequelize.define('user', {
-  name: Sequelize.STRING,
-  fbid: Sequelize.STRING,
-  img: Sequelize.STRING,
-});
+// var Vote = sequelize.define('vote', {
+//   uid: Sequelize.INTEGER,
+//   attractionId: Sequelize.INTEGER,
+//   boardId: Sequelize.INTEGER,
+// });
 
-var Board = sequelize.define('board', {
-  name: Sequelize.STRING,
-});
+
+// var votes = [{uid: 0, attractionId: 5, boardId: 1},{uid: 2, attractionId: 3, boardId: 4},{uid: 1, attractionId: 2, boardId: 3},{uid: 2, attractionId: 1, boardId: 6}];
+// for (var i=0; i<votes.length;i++) {
+//   Vote.create({
+//     uid:votes[i].uid,
+//     attractionId:votes[i].attractionId,
+//     boardId:votes[i].boardId
+//   }).then(function(vote){
+//     console.log(vote);
+//   });
+// }
+// var User = sequelize.define('user', {
+//   name: Sequelize.STRING,
+//   fbid: Sequelize.STRING,
+//   img: Sequelize.STRING,
+// });
+
+// var Board = sequelize.define('board', {
+//   name: Sequelize.STRING,
+// });
 
 // User.hasMany(Board,{foreignkey: 'creator'});
 // Board.belongsTo(User, {foreignkey: 'creator'})
@@ -248,10 +265,10 @@ var Board = sequelize.define('board', {
 //       console.log(obj);
 //     })
 
-// sequelize
-//   .sync({ force: true })
-//   .then(function(err) {
-//     console.log('It worked!');
-//   }, function (err) { 
-//     console.log('An error occurred while creating the table:', err);
-//   });
+sequelize
+  .sync({ force: true })
+  .then(function(err) {
+    console.log('It worked!');
+  }, function (err) { 
+    console.log('An error occurred while creating the table:', err);
+  });

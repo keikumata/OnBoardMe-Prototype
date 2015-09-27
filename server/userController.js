@@ -21,6 +21,12 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
+var Vote = sequelize.define('vote', {
+	uid: Sequelize.INTEGER,
+	attractionId: Sequelize.INTEGER,
+	boardId: Sequelize.INTEGER,
+});
+
 var User = sequelize.define('user', {
   name: Sequelize.STRING,
   fbid: Sequelize.STRING,
@@ -244,6 +250,41 @@ module.exports = {
 				}		
 			})
 		})
+	},
+	getVotes: function(req, res) {
+		var aid = Number(req.query.aid);
+		var bid = Number(req.query.bid);
+		Vote.findAll({
+			where: {
+				attractionId: aid,
+				boardId: bid
+			}
+		}).then(function(votes){
+			res.send(votes.length);
+		});
+	},
+	createVotes: function(req, res) {
+		var aid = Number(req.body.aid);
+		var bid = Number(req.body.bid);
+		Vote.findAll({
+			where: {
+				attractionId: aid,
+				boardId : bid
+			}
+		}).then(function(votes){
+			if (votes.length==0) {
+				Vote.create({
+					attractionId:aid,
+					boardId:bid,
+					uid:1
+				}).then(function() {
+					res.send("Success!!!!");
+				});
+			}
+			else {
+				res.send("Already voted");
+			}
+		});
 	},
 	createBoard: function(req, res) {
 		var name = req.body.name;

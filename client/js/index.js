@@ -15,18 +15,15 @@ $.get("/city", function(data) {
 
 
 $('#search').keyup(function() {
-	var $rows = $('.title');
-	var $dynamic = $('#dynamic');
+	var $feed = $('.feed');
 	var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
 	reg = RegExp(val, 'i'),
 	text;
 	
-	$rows.show().filter(function() {
+	$feed.show().filter(function() {
 		text = $(this).text().replace(/\s+/g, ' ');
 		return !reg.test(text);
-	}).hide(function() {
-		console.log("hiding");
-	});
+	}).hide();
 });
 // $(function(){
 // 	$('#search').keyup(function() {
@@ -63,5 +60,6 @@ function setUpDivs(names, ids, imageurls) {
 		feed.appendChild(clear);
 		a.appendChild(feed);
 		dynamic.appendChild(a);
+		dynamic.id = names[i];
 	}
 }
