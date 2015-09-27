@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="core.css">
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.js"></script>
 
 <title>OnboardMe</title>
 
@@ -45,29 +46,101 @@
              <div class="clear"></div>
           </div>
 
-          <!-- EVENTS LIST -->
+
+          <div class="city-title-wrapper-stick" style="display:none;">
+            <div class="city-image-stick" style="background-image:url('http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg')">
+            <div class="city-title-stick">
+              <div class="title-stick">London</div>
+            </div>
+            </div>
 
           <div class="events-filter">
-
-            FILTER
-
-          </div>
-
-          <div class="events-wrapper">
-
-          <div class="event">
-            <div class="event-image" style="background-image:url('http://photos1.meetupstatic.com/photos/event/3/4/d/c/600_315493532.jpeg')">
-            <div class="event-title">
-              <div class="event-title">Pub Crawl</div>
+              FILTER <i class="fa fa-angle-down"></i>
             </div>
-            </div>
+
             <div class="clear"></div>
          </div>
 
 
 
+          <!-- FILTER BREAK -->
+
+          <div class="events-filter">
+            FILTER <i class="fa fa-angle-down"></i>
+          </div>
+
+          <!-- EVENTS LIST -->
+
+          <div class="events-wrapper">
+
+          <div class="event">
+            <div class="event-image" style="background-image:url('http://camaje.com/-/wp-content/uploads/2013/06/camaje-cooking-7.jpg')">
+            <div class="event-title-wrapper">
+              <div class="event-title">Recipease Jamie Oliver</div>
+              <div class="event-location"><i class="fa fa-map-marker"></i> Camden</div>
+              <div class="event-price"><i class="fa fa-money"></i> £ 50</div>
+            </div>
+            </div>
+            <div class="clear"></div>
+          </div>
 
 
+          <div class="event">
+            <div class="event-image" style="background-image:url('http://edinburghflipside.com/wp-content/uploads/2013/10/Oscar-Chelsea-Football-Players-HD-Wallpaper.jpg')">
+            <div class="event-title-wrapper">
+              <div class="event-title">Chelsea FC Game</div>
+              <div class="event-location"><i class="fa fa-map-marker"></i> Camden</div>
+              <div class="event-price"><i class="fa fa-money"></i> £ 50</div>
+            </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+
+          <div class="event">
+            <div class="event-image" style="background-image:url('http://f.fwallpapers.com/images/night-life.jpg')">
+            <div class="event-title-wrapper">
+              <div class="event-title">Ministry of Sound</div>
+              <div class="event-location"><i class="fa fa-map-marker"></i> Camden</div>
+              <div class="event-price"><i class="fa fa-money"></i> £ 50</div>
+            </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+
+          <div class="event">
+            <div class="event-image" style="background-image:url('http://www.windsorcastlepub.com/cellar/wp-content/uploads/2011/05/beerfest.jpg')">
+            <div class="event-title-wrapper">
+              <div class="event-title">Beer Festival</div>
+              <div class="event-location"><i class="fa fa-map-marker"></i> Camden</div>
+              <div class="event-price"><i class="fa fa-money"></i> £ 50</div>
+            </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+
+
+          <div class="event">
+            <div class="event-image" style="background-image:url('http://factmag-images.s3.amazonaws.com/wp-content/uploads/2015/08/applemusicfestival.jpg')">
+            <div class="event-title-wrapper">
+              <div class="event-title">Apple Music Festival</div>
+              <div class="event-location"><i class="fa fa-map-marker"></i> Camden</div>
+              <div class="event-price"><i class="fa fa-money"></i> £ 50</div>
+            </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+
+
+          <div class="event">
+            <div class="event-image" style="background-image:url('https://d12edgf4lwbh8j.cloudfront.net/photo/image/LionKing2Wide.jpg')">
+            <div class="event-title-wrapper">
+              <div class="event-title">Lion King</div>
+              <div class="event-location"><i class="fa fa-map-marker"></i> Camden</div>
+              <div class="event-price"><i class="fa fa-money"></i> £ 50</div>
+            </div>
+            </div>
+            <div class="clear"></div>
+          </div>
 
 
 
@@ -100,6 +173,23 @@
     </div>
 
 </div>
+
+<script>
+$(document).ready(function(){
+
+	//Check to see if the window is top if not then display button
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 288) {
+			$('.city-title-wrapper-stick').fadeIn();
+		} else {
+			$('.city-title-wrapper-stick').fadeOut();
+		}
+	});
+
+
+});
+</script>
+
 
 </body>
 </html>

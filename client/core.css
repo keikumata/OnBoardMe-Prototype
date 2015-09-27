@@ -108,6 +108,21 @@ font-size:16px;
 }
 
 
+.shadow {
+    z-index: 1;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…gd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g);
+    background: -webkit-gradient(linear,50% 0,50% 100%,color-stop(50%,rgba(0,0,0,.4)),color-stop(100%,rgba(0,0,0,.8)));
+    background: -webkit-linear-gradient(rgba(0,0,0,.4) 95%,rgba(0,0,0,.8) 100%);
+    background: -moz-linear-gradient(rgba(0,0,0,.4) 95%,rgba(0,0,0,.8) 100%);
+    background: -o-linear-gradient(rgba(0,0,0,.4) 95%,rgba(0,0,0,.8) 100%);
+    background: linear-gradient(rgba(0,0,0,.4) 95%,rgba(0,0,0,.8) 100%);
+		bottom: 0;
+    right: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 /* PAGE TOP */
 
 .top-page{
@@ -161,7 +176,7 @@ position: relative;
 width: 100%;
 }
 
-.feed:hover{
+.feed:hover, .event:hover{
 	opacity: 0.9;
 }
 
@@ -670,7 +685,9 @@ width: 100%;
 	position: relative;
 	text-align:center;
 	color:#fff;
-	padding-top: 40px;
+	font-weight: bold;
+	font-size: 44px;
+	padding-top: 50px;
 }
 
 .city-title:hover{
@@ -678,12 +695,40 @@ width: 100%;
 }
 
 
+/* CITY STICKER */
+
+.city-title-wrapper-stick{
+position: fixed;
+top:0px;
+width: 100%;
+z-index: 1000;
+}
+
+.city-image-stick{
+	background-color: #f5f5f5;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	height: 60px;
+}
+
+.city-title-stick{
+	width: 100%;
+	display: table;
+	position: relative;
+	text-align:center;
+	font-size: 35px;
+	color:#fff;
+	padding-top: 10px;
+}
+
 
 /* EVENTS */
 .event{
 display: table;
 position: relative;
 width: 100%;
+border-bottom: 1px solid #eee;
 }
 
 .event:hover{
@@ -695,7 +740,7 @@ width: 100%;
 text-align: center;
 background-color:#007AFF;
 color: #fff;
-padding: 7px;
+padding: 8px;
 }
 
 .event-image{
@@ -703,19 +748,33 @@ padding: 7px;
 	background-size: cover;
 	background-position: center;
 	position: relative;
-	height: 100px;
+	height: 150px;
+}
+
+.event-title-wrapper{
+	padding: 15px;
 }
 
 .event-title{
 	width: 100%;
-	height: 100%;
 	display: table;
 	position: relative;
-	text-align:center;
 	color:#fff;
-	text-align: center;
+	text-align: left;
+	padding: 0px 15px;
+	font-size: 26px;
 }
 
+.event-location, .event-price{
+	width: 100%;
+	display: table;
+	position: relative;
+	color:#fff;
+	text-align: left;
+	padding: 0px 15px;
+	font-size: 14px;
+	font-weight: 400;
+}
 
 
 
