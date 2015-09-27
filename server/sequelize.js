@@ -20,33 +20,34 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
-var User = sequelize.define('user', {
-  name: Sequelize.STRING,
-  fbid: Sequelize.STRING,
-  img: Sequelize.STRING,
-});
-
-var Board = sequelize.define('board', {
-  name: Sequelize.STRING,
-});
-
-User.hasMany(Board,{foreignkey: 'creator'});
-Board.belongsTo(User, {foreignkey: 'creator'})
-
-// var City = sequelize.define('city', {
+// var User = sequelize.define('user', {
 //   name: Sequelize.STRING,
+//   fbid: Sequelize.STRING,
 //   img: Sequelize.STRING,
 // });
 
-// var Event = sequelize.define('event', {
+// var Board = sequelize.define('board', {
 //   name: Sequelize.STRING,
-//   coordinates: Sequelize.STRING,
-//   location: Sequelize.STRING,
-//   price: Sequelize.STRING,
 // });
 
-// City.hasMany(Event, {foreignkey: 'city'});
-// Event.belongsTo(City, {foreignkey: 'city'});
+// User.hasMany(Board,{foreignkey: 'creator'});
+// Board.belongsTo(User, {foreignkey: 'creator'})
+
+var City = sequelize.define('city', {
+  name: Sequelize.STRING,
+  img: Sequelize.STRING,
+});
+
+var Attraction = sequelize.define('attraction', {
+  name: Sequelize.STRING,
+  coordinates: Sequelize.STRING,
+  location: Sequelize.STRING,
+  price: Sequelize.STRING,
+  img: Sequelize.STRING,
+});
+
+City.hasMany(Attraction, {foreignkey: 'city'});
+Attraction.belongsTo(City, {foreignkey: 'city'});
 
 // var array = [
 // {name: 'London', img: 'http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg'}, 
@@ -63,24 +64,26 @@ Board.belongsTo(User, {foreignkey: 'creator'})
 //     console.log(country, 'country');
 //   })
 // }
-// 
-var events = [
-{},
-{},
-{},
-{},
-{},
-{},
-{},
-{},
-{},
-{},
-{},
-{},
-{},
-{},
-{},
-];
+
+// var events = [
+// {name: "British Museum", coordinates: "51.5195-0.1269", location: "Bloomsbury", price: "£21", img: 'http://www.qualitycrown.com/images/london-british-museum.jpg'},
+// {name: "Victoria and Albert Museum", coordinates: "51.4963-0.1721", location: "Knightsbridge", price: "£75", img: 'http://www.asianimage.co.uk/resources/images/4162743/'},
+// {name: "Churchill War Rooms", coordinates: "51.5021-0.1290", location: "Westminster", price: "£42", img: 'http://www.theexhibitionlist.com/wp-content/uploads/2013/03/churchill-museum-cabinet-war-room.jpeg'},
+// {name: "Houses of Parliament", coordinates: "51.4992-0.1247", location: "Westminster", price: "£57", img: 'http://www.e-architect.co.uk/images/jpgs/london/houses_parliament_nw080609_2.jpg'},
+// ];
+
+// for (var i = 0; i < events.length; i++) {
+//   Attraction.create({
+//     name: events[i].name,
+//     coordinates: events[i].coordinates,
+//     location: events[i].location,
+//     price: events[i].price,
+//     img: events[i].img,
+//     cityId: 1,
+//   }).then(function(attraction) {
+//     console.log(attraction);
+//   })
+// }
 
 // var users = [
 // {name: "Kei Yoshikoshi", img: "https://media.licdn.com/media/AAEAAQAAAAAAAAKxAAAAJGUwMTA5ZjcxLTNlNjAtNDc2NC04ODVmLTBlODNiMGI0MzcyNQ.jpg"},
@@ -126,12 +129,12 @@ var events = [
 // });
 
 
-User.findAll({
-}).then(function(user) {
-  for (var i =0; i < user.length; i++) {
-    console.log(user[i].img);
-  }
-});
+// User.findAll({
+// }).then(function(user) {
+//   for (var i =0; i < user.length; i++) {
+//     console.log(user[i].img);
+//   }
+// });
 // var Friend = sequelize.define('friend', {
 //   uid: Sequelize.STRING,
 //   bid: Sequelize.STRING,
