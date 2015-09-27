@@ -20,29 +20,49 @@ sequelize
   console.log('Unable to connect to the database:', err);
 });
 
-var User = sequelize.define('user', {
+// var User = sequelize.define('user', {
+//   name: Sequelize.STRING,
+//   fbid: Sequelize.STRING,
+// });
+
+// var Board = sequelize.define('board', {
+//   name: Sequelize.STRING,
+// });
+
+// User.hasMany(Board,{foreignkey: 'creator'});
+// Board.belongsTo(User, {foreignkey: 'creator'})
+
+var City = sequelize.define('city', {
   name: Sequelize.STRING,
-  fbid: Sequelize.STRING,
+  img: Sequelize.STRING,
 });
 
-var Board = sequelize.define('board', {
-  name: Sequelize.STRING,
-});
+// var array = [
+// {name: 'London', img: 'http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg'}, 
+// {name: 'Paris', img: 'http://www.france.com/wp-content/uploads/2014/01/header.jpg'}, 
+// {name: 'Berlim', img: 'http://www.magariblu.com/wp-content/uploads/2013/08/1.-Berlim.jpg'}, 
+// {name: 'Venice', img: 'http://www.hurwitzjamesco.com/wp-content/uploads/2015/02/beauty_of_venice-wide.jpg'}, 
+// {name: 'New York', img: 'http://7-themes.com/data_images/out/75/7028459-new-york-sunrise-wallpaper.jpg'}];
 
-User.hasMany(Board,{foreignkey: 'creator'});
-Board.belongsTo(User, {foreignkey: 'creator'})
+// for (var i = 0; i < array.length; i++) {
+//   City.create({
+//     name: array[i].name,
+//     img: array[i].img,
+//   }).then(function(country) {
+//     console.log(country, 'country');
+//   })
+// }
 
-var Country = sequelize.define('country', {
-  name: Sequelize.STRING,
-});
+City.findAll({}).then(function(city) {
+  console.log(city);
+})
 
-
-Board.findAll({
-}).then(function(user) {
-  for (var i =0; i < user.length; i++) {
-    console.log(user[i].dataValues.name);
-  }
-});
+// Board.findAll({
+// }).then(function(user) {
+//   for (var i =0; i < user.length; i++) {
+//     console.log(user[i].dataValues.name);
+//   }
+// });
 // var Friend = sequelize.define('friend', {
 //   uid: Sequelize.STRING,
 //   bid: Sequelize.STRING,

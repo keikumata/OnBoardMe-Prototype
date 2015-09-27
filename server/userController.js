@@ -33,8 +33,9 @@ var Board = sequelize.define('board', {
 User.hasMany(Board,{foreignkey: 'creator'});
 Board.belongsTo(User, {foreignkey: 'creator'})
 
-var Country = sequelize.define('country', {
+var City = sequelize.define('city', {
   name: Sequelize.STRING,
+  img: Sequelize.STRING,
 });
 
 module.exports = {
@@ -64,6 +65,16 @@ module.exports = {
 			}
 		});
 	},
+	getCities: function(req, res) {
+		City.findAll({}).then(function(city) {
+			var obj = {cities: []};
+			for (var i = 0; i < city.length; i++) {
+				obj.cities.push({name: city[i].name, cid: city[i].id, img: city[i].img});
+			}
+			var str = JSON.stringify(obj);
+			res.send(str);
+		})
+	},
 	getBoards: function(req, res) {
 		var userId = 1;
 		// var userId = req.cookie['user-id'];
@@ -80,6 +91,9 @@ module.exports = {
 			res.send(str);
 		})
 	},	
+	getBoardInfo: function(req, res) {
+
+	},
 	createBoard: function(req, res) {
 		var user_id = req.cookies.user_id;
 		Board.create({name: "Summer break", userId: user_id}).then(function(board) {
