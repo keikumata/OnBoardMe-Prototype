@@ -51,13 +51,15 @@ module.exports = {
 			}
 		}).then(function(user) {
 			if (user.length) {
-				res.send(user[0].dataValues.id);
+				res.cookie('user_id', user[0].dataValues.id, { maxAge: 900000, httpOnly: true });
+				res.send('successfully logged in');
 			} else {
 				User.create({
 					name: name,
 					fbid: fbid,
 				}).then(function(user) {
-					res.send(user[0].dataValues.id);
+					res.cookie('user_id', user[0].dataValues.id, { maxAge: 900000, httpOnly: true });
+					res.send('successfully created user')
 				});
 			}
 		});
