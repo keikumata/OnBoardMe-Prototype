@@ -186,6 +186,7 @@ module.exports = {
 			    userId: userId
 			  }
 			}).then(function(relation) {
+				var queue = relation.length;
 			  for (var i = 0; i < relation.length; i++) {
 			    var bid = relation[i].boardId;
 			    Board.findAll({
@@ -194,8 +195,11 @@ module.exports = {
 			      }
 			    }).then(function(board) {
 			      obj.boards.push({name: board[0].name, bid: bid});
-			      var str = JSON.stringify(obj);
-						res.send(str);
+			      queue--;
+			      if (queue === 0) {
+			      	var str = JSON.stringify(obj);
+							res.send(str);
+			      }
 			    })
 			  }
 			});

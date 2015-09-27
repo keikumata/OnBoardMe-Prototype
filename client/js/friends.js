@@ -84,7 +84,7 @@ invitebutton.onclick = function() {
   });
   if (obj.invited.length && obj.name){
     $.post('/create', obj).then(function(res) {
-      // window.location = 'boards.html';
+      window.location = 'boards.html';
       console.log(res);
     })
   } else {
