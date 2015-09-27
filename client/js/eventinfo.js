@@ -2,13 +2,13 @@
   var aid = href.split("aid=")[1];
 
   $.get("/eventinfo?"+"aid="+aid, function(data) {
-  	var jsondata = JSON.parse(data);
-  	var eventobject = jsondata.events;
+  	var eventobject = JSON.parse(data);
   	var name = eventobject.name;
   	var url = eventobject.img;
   	var loc = eventobject.location;
   	var price = eventobject.price;
-  	var coordinate= eventobject.coordinates;
+  	var temp = eventobject.coordinates;
+  	var coordinate = eventobject.coordinates.split("-");
   	setUpDivs(name, aid, url, loc, price,coordinate);
   })
 
@@ -17,7 +17,8 @@
 
   function setUpDivs(name, aid, url, loc, price, coordinate) {
   	var place_image = document.getElementById("place-image");
-  	place_image.style.backgroundImage = "url('" + url + ")'";
+  	place_image.style.backgroundImage = "url('" + url + "')";
+  	
   	place_image.className = "place-image";
 
   	var place_title = document.getElementById('title');
@@ -49,6 +50,18 @@
 
   	event_title.appendChild(place_stats);
 
+
+  	var iframe = document.getElementById("google-iframe");
+  	// iframe.frameborder = "0";
+  	// iframe.scrolling = "no";
+  	// iframe.marginheight="0";
+  	// iframe.marginwidth ="0";
+  	// iframe.width="328";
+  	// iframe.height="375";
+  	iframe.src="http://maps.google.com/maps?z=12&t=m&q=loc:" + coordinate[0] + "+" + coordinate[1] + "&output=embed"; 
+
+
+  	// <div><small><a href="http://embedgooglemaps.com">embedgooglemaps.com</a></small></div><div><small><a href="http://premiumlinkgenerator.com/nitroflare-org">nitroflare premium link generator</a></small></div></iframe>
   }
 
 
