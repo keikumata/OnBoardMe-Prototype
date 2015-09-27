@@ -23,7 +23,8 @@ body {
 }
 
 #page-container{
-padding-bottom: 60px;
+padding-bottom: 90px;
+background: #fff;
 }
 
 a {
@@ -37,7 +38,7 @@ img {
 	border:0;
 	-webkit-touch-callout:none;
 	outline: 0;
-	max-width: 100% !important;
+	max-width: 100%;
 	height: auto;
 }
 
@@ -116,6 +117,10 @@ font-size:16px;
   background-position: center top;
   background-attachment: scroll;
   position: relative;
+	background: -webkit-linear-gradient(#F7F7F7, #D7D7D7); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#F7F7F7, #D7D7D7); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#F7F7F7, #D7D7D7); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#F7F7F7, #D7D7D7); /* Standard syntax */
 }
 .top-page-wrapper{
 	width: 100%;
@@ -333,7 +338,6 @@ color: #fff;
 text-align: center;
 font-size: 18px;
 border-radius: 4px;
-max-width: 300px;
 }
 
 .board:hover{
@@ -361,7 +365,6 @@ max-width: 300px;
 	text-align: center;
 	font-size: 22px;
 	border-radius: 4px;
-	max-width: 300px;
 }
 
 .board-plus:hover{
@@ -382,6 +385,72 @@ max-width: 300px;
 
 .board-title-plus:hover{
 	color: #fff !important;
+}
+
+.popup {
+		width: 98%;
+    max-width:700px;
+    min-height:200px;
+    padding:20px;
+    border-radius:3px;
+		background: #fff;
+    opacity:1;
+    background-size:cover;
+    -webkit-box-shadow:0 5px 15px rgba(0,0,0,.5);
+    box-shadow:0 5px 15px rgba(0,0,0,.5);
+    clear:both;
+    display:block;
+		position: fixed;
+		top:50px;
+		margin:0 auto;
+}
+
+.popup_wrapper {
+    display:block;
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-color:rgba(0,0,0,.85098);
+    z-index:99999;
+    -webkit-transition:opacity 400ms ease-in;
+    -moz-transition:opacity 400ms ease-in;
+    transition:opacity 400ms ease-in
+}
+
+.popup-save-title{
+	font-size: 24px;
+}
+
+.popup-save-button{
+display: block;
+height: 40px;
+}
+
+.save-button{
+display: block;
+float: left;
+width: 47%;
+padding: 15px 20px;
+border-radius: 3px;
+border: 1px solid #4285f4;
+background-color: #fff;
+color: #4285f4;
+text-align: center;
+margin-right: 12px;
+}
+
+.cancel-button{
+display: block;
+float: left;
+width: 47%;
+padding: 15px 20px;
+border-radius: 3px;
+border: 1px solid #82888a;
+background-color: #fff;
+color: #82888a;
+text-align: center;
 }
 
 /* SINGLE BOARD */
@@ -415,8 +484,8 @@ color:#000;
 }
 
 .single-board{
-	width: 25%;
-	margin:auto 2%;
+	width: 27%;
+	margin:auto 1%;
 	display: inline-block;
 	float: left;
 	text-align:center;
@@ -457,7 +526,7 @@ color:#000;
 	background-position: center;
 	position: relative;
 	width: 100%;
-	height: 180px;
+	height: 150px;
 	border:1px solid #eee;
 }
 
@@ -470,4 +539,255 @@ color:#000;
 
 .single-board-details-text{
 	padding: 10px;
+}
+
+
+/* FRIENDS LIST */
+
+.friends-wrapper{
+	padding: 10px;
+}
+
+
+.friends-list-title{
+display: block;
+font-size: 25px;
+text-align: center;
+margin: 15px auto;
+}
+
+.friends-list-subtitle{
+display: block;
+font-size: 14px;
+text-align: center;
+margin: 5px auto;
+}
+
+.friends-list-sharer{
+	display: block;
+	font-size:14px;
+	text-align:center;
+	margin: 10px auto;
+}
+
+.friends-list-sharer .fa{
+	font-size: 40px;
+	margin:10px;
+}
+
+.fa-facebook-official{color:#3b5998;}
+.fa-whatsapp{color:#4dc247;}
+.fa-whatsapp{ }
+
+.friend{
+display: block;
+padding: 10px;
+border-top: 1px solid #eee;
+}
+
+.friend-photo{
+display: block;
+float:left;
+width: 20%;
+}
+
+.friend-photo-img{
+border-radius: 50% !important;
+border:3px solid #eee;
+}
+
+.friend-name{
+padding-top:15px;
+padding-left:20px;
+display: block;
+float:left;
+width: 70%;
+font-size: 22px;
+font-weight: bold;
+}
+
+.friend-add{
+display: block;
+float: right;
+font-size: 30px;
+padding-top:15px;
+}
+
+
+.friends-invite-button{
+width: 100%;
+text-align: center;
+margin-top:20px;
+}
+
+.invite-button{
+margin:0px auto;
+padding: 15px 40px;
+border-radius: 3px;
+border: 1px solid #4285f4;
+background-color: #fff;
+color: #4285f4;
+}
+
+.popup-save-select{
+	display: block;
+	width:100%;
+}
+
+.popup-save-select select{
+width:100%;
+margin: 10px 0px;
+padding: 10px;
+}
+
+
+.invite-button:hover, .save-button:hover{
+	background-color: #4285f4;
+	color: #fff;
+}
+
+
+
+/* CITY TITLE - EVENTS */
+
+.city-title-wrapper{
+display: table;
+position: relative;
+width: 100%;
+}
+
+.city-image{
+	background-color: #f5f5f5;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	height: 180px;
+}
+
+.city-title{
+	width: 100%;
+	display: table;
+	position: relative;
+	text-align:center;
+	color:#fff;
+	padding-top: 40px;
+}
+
+.city-title:hover{
+	opacity: 0.9;
+}
+
+
+
+/* EVENTS */
+.event{
+display: table;
+position: relative;
+width: 100%;
+}
+
+.event:hover{
+	opacity: 0.9;
+}
+
+.events-filter{
+width: 100%;
+text-align: center;
+background-color:#007AFF;
+color: #fff;
+padding: 7px;
+}
+
+.event-image{
+	background-color: #f5f5f5;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	height: 100px;
+}
+
+.event-title{
+	width: 100%;
+	height: 100%;
+	display: table;
+	position: relative;
+	text-align:center;
+	color:#fff;
+	text-align: center;
+}
+
+
+
+
+
+
+/* CHECKBOX */
+
+
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left:0; top: 2px;
+  width: 17px; height: 17px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '✔';
+  position: absolute;
+  top: 0; left: 4px;
+  font-size: 18px;
+  color: #09ad7e;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 1px dotted blue;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 1px solid #4778d9!important;
 }
