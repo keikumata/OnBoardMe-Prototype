@@ -252,15 +252,25 @@ module.exports = {
 		})
 	},
 	getVotes: function(req, res) {
-		var aid = Number(req.query.aid);
+		// var aid = Number(req.query.aid);
 		var bid = Number(req.query.bid);
 		Vote.findAll({
 			where: {
-				attractionId: aid
 				boardId : bid
 			}
 		}).then(function(votes){
-			res.send(votes.length);
+			var map = {};
+			for (var j=0; j<votes.length;j++) {
+				var temp = "" + votes[j].attractionId;
+				if (map[temp]) {
+					map[temp]++;
+				}
+				else {
+					map[temp] = 1;
+				}
+			}
+			var result = JSON.stringify(map);
+			res.send(result);
 		});
 	},
 	createVotes: function(req, res) {
@@ -268,7 +278,7 @@ module.exports = {
 		var bid = Number(req.body.bid);
 		Vote.findAll({
 			where: {
-				attractionId: aid
+				attractionId: aid,
 				boardId : bid
 			}
 		}).then(function(votes){
@@ -276,7 +286,7 @@ module.exports = {
 				Vote.create({
 					attractionId:aid,
 					boardId:bid,
-					userId:1
+					uid:1
 				}).then(function() {
 					res.send("Success!!!!");
 				});
