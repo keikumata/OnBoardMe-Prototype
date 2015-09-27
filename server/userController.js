@@ -194,7 +194,7 @@ module.exports = {
 			        id: bid
 			      }
 			    }).then(function(board) {
-			      obj.boards.push({name: board[0].name, bid: bid});
+			      obj.boards.push({name: board[0].name, bid: board[0].id});
 			      queue--;
 			      if (queue === 0) {
 			      	var str = JSON.stringify(obj);
@@ -219,6 +219,10 @@ module.exports = {
 					boardId: bid
 				}
 			}).then(function(attraction) {
+				if (!attraction.length){
+					var str = JSON.stringify(obj);
+					res.send(str);
+				}
 				for (var i = 0; i < attraction.length; i++) {
 					var aid = attraction[i].attractionId;
 					Attraction.findAll({
@@ -230,6 +234,7 @@ module.exports = {
 							obj.events.push({name: e[j].name, img: e[j].img, aid: e[j].id});
 						}	
 						var str = JSON.stringify(obj);
+						console.log(str, 'hello');
 						res.send(str);
 					})
 				}
