@@ -17,6 +17,8 @@ app.use(express.static(path.resolve(__dirname + '/../client')));
 app.use(bodyParser());
 app.use(cookieParser());
 
+app.post('/log', userController.log);
+
 app.get('/login', userController.loginPage);
 app.post('/login', userController.login);
 

@@ -37,7 +37,7 @@ function setUpDivs(names,aids,imageurls,boardname, votes) {
 		menu.id = ''+aids[i]+'-'+bid;
 		var s = aids[i] + '';
 		var num = votes[s] || 0;
-		menu.innerHTML = num + '-Votes';
+		menu.innerHTML = num + ' Votes';
 
 		single_board_voting.appendChild(menu);
 
@@ -76,9 +76,9 @@ function setUpDivs(names,aids,imageurls,boardname, votes) {
 			$.post('/vote', body).then(function(response) {
 				// change color to green
 				this.className = 'vote-board-menu-activated';
-				var num = Number(this.innerHTML.split('-')[0]);
+				var num = Number(this.innerHTML.split(' ')[0]);
 				num++;
-				this.innerHTML = num + '-Votes';
+				this.innerHTML = num + ' Votes';
 				console.log(response);
 			}.bind(this));
 		};
