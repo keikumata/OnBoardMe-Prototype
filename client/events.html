@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="core.css">
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 
 <title>OnboardMe</title>
 
@@ -38,9 +38,9 @@
           <!-- CITY WRAPPER -->
 
            <div class="city-title-wrapper">
-             <div class="city-image" style="background-image:url('http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg')">
+             <div id = "city-image"></div>
              <div class="city-title">
-               <div class="title">London</div>
+               <div id="title"></div>
              </div>
              </div>
              <div class="clear"></div>
@@ -48,9 +48,9 @@
 
 
           <div class="city-title-wrapper-stick" style="display:none;">
-            <div class="city-image-stick" style="background-image:url('http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg')">
+            <div id="city-image-stick"></div>
             <div class="city-title-stick">
-              <div class="title-stick">London</div>
+              <div id="title-stick"></div>
             </div>
             </div>
 
@@ -73,7 +73,10 @@
 
           <div class="events-wrapper">
 
-          <div class="event">
+          <div id="dynamic-event"></div>
+
+
+          <!-- <div class="event">
             <div class="event-image" style="background-image:url('http://camaje.com/-/wp-content/uploads/2013/06/camaje-cooking-7.jpg')">
             <div class="event-title-wrapper">
               <div class="event-title">Recipease Jamie Oliver</div>
@@ -140,7 +143,7 @@
             </div>
             </div>
             <div class="clear"></div>
-          </div>
+          </div> -->
 
 
 
@@ -189,7 +192,7 @@ $(document).ready(function(){
 
 });
 </script>
-
+    <script src="js/events.js"></script>
 
 </body>
 </html>

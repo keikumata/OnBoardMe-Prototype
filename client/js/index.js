@@ -20,7 +20,7 @@ function setUpDivs(names, ids, imageurls) {
 		title.innerHTML = names[i];
 
 		var a = document.createElement("a");
-		a.href = "eventinfo.html?"+"cid=" + ids[i];
+		a.href = "events.html?"+"cid=" + ids[i];
 
 		var feed_title = document.createElement("div");
 		feed_title.className = "feed-title";

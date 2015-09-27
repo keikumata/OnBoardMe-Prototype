@@ -97,7 +97,7 @@ module.exports = {
 		})
 	},
 	getAttractions: function(req, res) {
-		var cid = req.query.cid;
+		var cid = Number(req.query.cid);
 		Attraction.findAll({
 			where: {
 				cityId: cid
@@ -112,7 +112,7 @@ module.exports = {
 					id: cid
 				}
 			}).then(function(city) {
-				obj.city = city.name;
+				obj.city = city[0].name;
 				var str = JSON.stringify(obj);
 				res.send(str);
 			});
