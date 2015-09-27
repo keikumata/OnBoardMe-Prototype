@@ -136,6 +136,11 @@ module.exports = {
 			res.send(str);
 		})
 	},
+	pinToBoard: function(req, res) {
+		var aid = Number(req.query.aid);
+		var bid = Number(req.query.bid);
+		
+	},
 	getBoards: function(req, res) {
 		var userId = 2;
 		// var userId = req.cookie['user-id'];

@@ -46,6 +46,13 @@ var Attraction = sequelize.define('attraction', {
   img: Sequelize.STRING,
 });
 
+var AttractionOption = sequelize.define('attractionoption', {
+  attractionId: Sequelize.INTEGER,
+  
+});
+
+
+
 City.hasMany(Attraction, {foreignkey: 'city'});
 Attraction.belongsTo(City, {foreignkey: 'city'});
 
