@@ -39,7 +39,9 @@ var Country = sequelize.define('country', {
 
 Board.findAll({
 }).then(function(user) {
-  console.log(user, 'asdlkfjas');
+  for (var i =0; i < user.length; i++) {
+    console.log(user[i].dataValues.name);
+  }
 });
 // var Friend = sequelize.define('friend', {
 //   uid: Sequelize.STRING,
